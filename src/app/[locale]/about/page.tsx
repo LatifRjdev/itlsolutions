@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { Target, Heart, Zap } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Button, Container } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -9,55 +10,56 @@ export const metadata: Metadata = {
     "Learn about ITL Solutions - our mission, values, and the journey that made us a trusted technology partner.",
 };
 
-const timeline = [
-  {
-    year: "2010",
-    title: "Founded",
-    description:
-      "Started as a small team of passionate developers with a vision to transform businesses through technology.",
-  },
-  {
-    year: "2013",
-    title: "First Major Client",
-    description:
-      "Secured our first Fortune 500 client, marking our entry into enterprise solutions.",
-  },
-  {
-    year: "2018",
-    title: "Global Expansion",
-    description:
-      "Opened offices in Europe and Asia, serving clients across 20+ countries.",
-  },
-  {
-    year: "2023",
-    title: "Industry Recognition",
-    description:
-      "Named one of the Top 50 IT Companies by TechReview for innovation and client satisfaction.",
-  },
-];
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
-const values = [
-  {
-    icon: Target,
-    title: "Excellence",
-    description:
-      "We strive for excellence in every project, delivering solutions that exceed expectations.",
-  },
-  {
-    icon: Heart,
-    title: "Client Focus",
-    description:
-      "Our clients success is our success. We build lasting partnerships based on trust and transparency.",
-  },
-  {
-    icon: Zap,
-    title: "Innovation",
-    description:
-      "We embrace cutting-edge technologies and methodologies to deliver future-proof solutions.",
-  },
-];
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("about");
 
-export default function AboutPage() {
+  const timeline = [
+    {
+      year: "2015",
+      title: t("timeline.founded"),
+      description: t("timeline.foundedDesc"),
+    },
+    {
+      year: "2018",
+      title: t("timeline.firstClient"),
+      description: t("timeline.firstClientDesc"),
+    },
+    {
+      year: "2023",
+      title: t("timeline.expansion"),
+      description: t("timeline.expansionDesc"),
+    },
+    {
+      year: "2025",
+      title: t("timeline.mission"),
+      description: t("timeline.missionDesc"),
+    },
+  ];
+
+  const values = [
+    {
+      icon: Target,
+      title: t("excellence"),
+      description: t("excellenceDesc"),
+    },
+    {
+      icon: Heart,
+      title: t("clientFocus"),
+      description: t("clientFocusDesc"),
+    },
+    {
+      icon: Zap,
+      title: t("innovation"),
+      description: t("innovationDesc"),
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -66,17 +68,13 @@ export default function AboutPage() {
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="flex-1">
               <h1 className="text-4xl md:text-5xl font-black text-[var(--foreground)] mb-6">
-                About ITL Solutions
+                {t("pageTitle")}
               </h1>
               <p className="text-lg text-[var(--foreground-secondary)] leading-relaxed mb-6">
-                We are a team of passionate technologists dedicated to helping
-                businesses thrive in the digital age. Since 2010, we&apos;ve been
-                transforming ideas into powerful technology solutions.
+                {t("heroText")}
               </p>
               <p className="text-[var(--foreground-secondary)] leading-relaxed">
-                Our mission is simple: to empower organizations with innovative
-                IT solutions that drive growth, efficiency, and competitive
-                advantage.
+                {t("missionText")}
               </p>
             </div>
             <div className="flex-1">
@@ -98,11 +96,10 @@ export default function AboutPage() {
         <Container size="lg">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[var(--foreground)] mb-4">
-              Our Journey
+              {t("journeyTitle")}
             </h2>
             <p className="text-[var(--foreground-secondary)] max-w-2xl mx-auto">
-              From a small startup to a global technology partner, here&apos;s how
-              we&apos;ve grown.
+              {t("journeySubtitle")}
             </p>
           </div>
 
@@ -161,10 +158,10 @@ export default function AboutPage() {
         <Container size="lg">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[var(--foreground)] mb-4">
-              Our Values
+              {t("valuesTitle")}
             </h2>
             <p className="text-[var(--foreground-secondary)] max-w-2xl mx-auto">
-              The principles that guide everything we do.
+              {t("valuesSubtitle")}
             </p>
           </div>
 
@@ -194,18 +191,17 @@ export default function AboutPage() {
         <Container size="md">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-[var(--foreground)] mb-4">
-              Want to join our team?
+              {t("ctaTitle")}
             </h2>
             <p className="text-[var(--foreground-secondary)] mb-8 max-w-2xl mx-auto">
-              We&apos;re always looking for talented individuals who share our
-              passion for technology and innovation.
+              {t("ctaSubtitle")}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button href="/team" size="lg">
-                Meet the Team
+              <Button href="/contact" size="lg">
+                {t("viewWork")}
               </Button>
-              <Button href="/contact" variant="outline" size="lg">
-                Contact Us
+              <Button href="/portfolio" variant="outline" size="lg">
+                {t("viewWork")}
               </Button>
             </div>
           </div>

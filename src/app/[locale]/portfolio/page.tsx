@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui";
 import { PortfolioCard } from "@/components/cards";
 import { prisma } from "@/lib/prisma";
@@ -9,7 +10,15 @@ export const metadata: Metadata = {
     "Explore our portfolio of successful projects across fintech, healthcare, e-commerce, and more.",
 };
 
-export default async function PortfolioPage() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function PortfolioPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("portfolio");
+
   const projects = await prisma.project.findMany({
     orderBy: { publishedAt: "desc" },
   });
@@ -21,11 +30,10 @@ export default async function PortfolioPage() {
         <Container size="lg">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-black text-[var(--foreground)] mb-6">
-              Our Portfolio
+              {t("title")}
             </h1>
             <p className="text-lg text-[var(--foreground-secondary)] leading-relaxed">
-              Discover how we&apos;ve helped businesses across various industries
-              achieve their digital transformation goals.
+              {t("subtitle")}
             </p>
           </div>
         </Container>

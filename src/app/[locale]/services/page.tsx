@@ -17,6 +17,7 @@ import {
   Lightbulb,
   LucideIcon,
 } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Button, Container } from "@/components/ui";
 import { prisma } from "@/lib/prisma";
 
@@ -42,7 +43,16 @@ const iconMap: Record<string, LucideIcon> = {
   Lightbulb,
 };
 
-export default async function ServicesPage() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function ServicesPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("services");
+  const tCommon = await getTranslations("common");
+
   const services = await prisma.service.findMany({
     orderBy: { order: "asc" },
   });
@@ -54,11 +64,10 @@ export default async function ServicesPage() {
         <Container size="lg">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-black text-[var(--foreground)] mb-6">
-              Our Services
+              {t("title")}
             </h1>
             <p className="text-lg text-[var(--foreground-secondary)] leading-relaxed">
-              We offer a comprehensive range of IT services designed to help
-              businesses modernize, scale, and succeed in the digital landscape.
+              {t("subtitle")}
             </p>
           </div>
         </Container>
@@ -109,7 +118,7 @@ export default async function ServicesPage() {
                     </ul>
 
                     <Button href="/contact" className="mt-4">
-                      Get Started <ArrowRight className="w-4 h-4 ml-2" />
+                      {tCommon("learnMore")} <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </div>
                 </div>

@@ -20,6 +20,7 @@ import {
   Lightbulb,
   type LucideIcon,
 } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Button, Container } from "@/components/ui";
 import { ServiceCard } from "@/components/cards";
 import { stats, whyChooseUs } from "@/data/services";
@@ -41,7 +42,15 @@ const iconMap: Record<string, LucideIcon> = {
   Lightbulb,
 };
 
-export default async function HomePage() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("home");
+
   const services = await prisma.service.findMany({
     orderBy: { order: "asc" },
     take: 6,
@@ -59,19 +68,17 @@ export default async function HomePage() {
           <div className="absolute inset-0 flex items-center justify-center px-4">
             <div className="max-w-[960px] flex flex-col items-center text-center gap-6">
               <h1 className="text-white text-4xl md:text-6xl font-black leading-tight tracking-tight">
-                Transforming Business through Technology
+                {t("heroTitle")}
               </h1>
               <p className="text-gray-200 text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
-                We deliver cutting-edge IT solutions, from cloud infrastructure
-                to custom software development, designed to scale with your
-                ambition.
+                {t("heroSubtitle")}
               </p>
               <div className="flex flex-wrap gap-4 justify-center mt-4">
                 <Button href="/services" size="lg">
-                  Our Services
+                  {t("cta")}
                 </Button>
                 <Button href="/portfolio" variant="secondary" size="lg">
-                  View Portfolio
+                  {t("viewAll")}
                 </Button>
               </div>
             </div>
@@ -110,11 +117,10 @@ export default async function HomePage() {
         <Container size="lg">
           <div className="text-center mb-12">
             <h2 className="text-[var(--foreground)] text-3xl md:text-4xl font-bold mb-4">
-              Our Expertise
+              {t("servicesTitle")}
             </h2>
             <p className="text-[var(--foreground-secondary)] max-w-2xl mx-auto">
-              Comprehensive technology services tailored to modernize your
-              operations and drive growth.
+              {t("servicesSubtitle")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -141,10 +147,10 @@ export default async function HomePage() {
             <div className="flex-1 space-y-8">
               <div>
                 <span className="text-[var(--primary)] font-bold tracking-wider text-sm uppercase">
-                  Why Choose Us
+                  {t("whyChooseUs")}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-black mt-2 text-[var(--foreground)] leading-tight">
-                  We build technology that builds your business.
+                  {t("whyChooseUsSubtitle")}
                 </h2>
                 <p className="text-[var(--foreground-secondary)] mt-4">
                   We don&apos;t just write code; we solve business problems. Our
@@ -215,15 +221,14 @@ export default async function HomePage() {
             <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-white opacity-5"></div>
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to start your next project?
+                {t("readyToStart")}
               </h2>
               <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-                Let&apos;s discuss how we can help your business grow with our
-                custom IT solutions.
+                {t("readyToStartSubtitle")}
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button href="/contact" variant="secondary" size="lg">
-                  Get in Touch
+                  {t("contactUs")}
                 </Button>
                 <Button
                   href="/portfolio"
@@ -231,7 +236,7 @@ export default async function HomePage() {
                   size="lg"
                   className="border-white text-white hover:bg-white hover:text-[var(--primary)]"
                 >
-                  View Our Work
+                  {t("viewAll")}
                 </Button>
               </div>
             </div>

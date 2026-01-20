@@ -2,21 +2,24 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Menu, X, Hexagon } from "lucide-react";
 import { Button } from "@/components/ui";
 import { Container } from "@/components/ui";
 import { ThemeToggle } from "./ThemeToggle";
-
-const navigation = [
-  { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
-];
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const t = useTranslations("nav");
+
+  const navigation = [
+    { name: t("services"), href: "/services" },
+    { name: t("portfolio"), href: "/portfolio" },
+    { name: t("about"), href: "/about" },
+    { name: t("blog"), href: "/blog" },
+    { name: t("contact"), href: "/contact" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-[var(--surface)] border-b border-[var(--border)]">
@@ -33,11 +36,11 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <nav className="flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4">
+            <nav className="flex items-center gap-6">
               {navigation.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
                   className="text-sm font-medium text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
                 >
@@ -45,14 +48,16 @@ export function Header() {
                 </Link>
               ))}
             </nav>
+            <LanguageSwitcher />
             <ThemeToggle />
             <Button href="/contact" size="md">
-              Get a Quote
+              {t("getQuote")}
             </Button>
           </div>
 
           {/* Mobile Controls */}
           <div className="flex md:hidden items-center gap-2">
+            <LanguageSwitcher />
             <ThemeToggle />
             <button
               className="size-10 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--foreground)]"
@@ -73,7 +78,7 @@ export function Header() {
             <nav className="flex flex-col gap-4">
               {navigation.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
                   className="text-sm font-medium text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
@@ -82,7 +87,7 @@ export function Header() {
                 </Link>
               ))}
               <Button href="/contact" size="md" className="mt-2">
-                Get a Quote
+                {t("getQuote")}
               </Button>
             </nav>
           </div>

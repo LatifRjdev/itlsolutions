@@ -1,27 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Hexagon, Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
 import { Container } from "@/components/ui";
-
-const footerLinks = {
-  services: [
-    { name: "Cloud Solutions", href: "/services#cloud" },
-    { name: "Custom Software", href: "/services#software" },
-    { name: "IT Consulting", href: "/services#consulting" },
-    { name: "Cybersecurity", href: "/services#security" },
-    { name: "Data Analytics", href: "/services#analytics" },
-  ],
-  company: [
-    { name: "About Us", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
-  ],
-  legal: [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" },
-  ],
-};
 
 const socialLinks = [
   { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
@@ -30,6 +12,29 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const t = useTranslations("footer");
+
+  const footerLinks = {
+    services: [
+      { name: t("cloudSolutions"), href: "/services#cloud" },
+      { name: t("customSoftware"), href: "/services#software" },
+      { name: t("itConsulting"), href: "/services#consulting" },
+      { name: t("cybersecurity"), href: "/services#security" },
+      { name: t("dataAnalytics"), href: "/services#analytics" },
+    ],
+    company: [
+      { name: t("aboutUs"), href: "/about" },
+      { name: t("portfolio"), href: "/portfolio" },
+      { name: t("blog"), href: "/blog" },
+      { name: t("contact"), href: "/contact" },
+    ],
+    legal: [
+      { name: t("privacy"), href: "/privacy" },
+      { name: t("terms"), href: "/terms" },
+      { name: t("cookies"), href: "/cookies" },
+    ],
+  };
+
   return (
     <footer className="bg-[var(--background-alt)] border-t border-[var(--border)] pt-16 pb-8">
       <Container>
@@ -46,8 +51,7 @@ export function Footer() {
               </h2>
             </Link>
             <p className="text-sm text-[var(--foreground-secondary)] mb-6 max-w-sm">
-              Transforming businesses through cutting-edge technology solutions.
-              From cloud infrastructure to custom software development.
+              {t("description")}
             </p>
 
             {/* Contact Info */}
@@ -76,11 +80,11 @@ export function Footer() {
           {/* Services Column */}
           <div>
             <h3 className="text-sm font-bold text-[var(--foreground)] mb-4">
-              Services
+              {t("services")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
@@ -95,11 +99,11 @@ export function Footer() {
           {/* Company Column */}
           <div>
             <h3 className="text-sm font-bold text-[var(--foreground)] mb-4">
-              Company
+              {t("company")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
@@ -114,11 +118,11 @@ export function Footer() {
           {/* Legal Column */}
           <div>
             <h3 className="text-sm font-bold text-[var(--foreground)] mb-4">
-              Legal
+              {t("legal")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
@@ -134,7 +138,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-[var(--foreground-secondary)]">
-            © {new Date().getFullYear()} ITL Solutions. All rights reserved.
+            © {new Date().getFullYear()} {t("copyright")}
           </p>
 
           {/* Social Links */}

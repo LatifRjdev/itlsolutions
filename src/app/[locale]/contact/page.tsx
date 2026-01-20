@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui";
 import { ContactForm } from "@/components/forms/ContactForm";
 
@@ -9,34 +10,42 @@ export const metadata: Metadata = {
     "Get in touch with ITL Solutions. We're here to help with your technology needs.",
 };
 
-const contactInfo = [
-  {
-    icon: Mail,
-    title: "Email",
-    value: "info@itlsolutions.net",
-    href: "mailto:info@itlsolutions.net",
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    value: "+992 557 777 509",
-    href: "tel:+992557777509",
-  },
-  {
-    icon: MapPin,
-    title: "Address",
-    value: "Ayni 50/51, Dushanbe, Tajikistan",
-    href: null,
-  },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    value: "Mon - Fri: 9:00 AM - 6:00 PM",
-    href: null,
-  },
-];
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("contact");
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: t("email"),
+      value: "info@itlsolutions.net",
+      href: "mailto:info@itlsolutions.net",
+    },
+    {
+      icon: Phone,
+      title: t("phone"),
+      value: "+992 557 777 509",
+      href: "tel:+992557777509",
+    },
+    {
+      icon: MapPin,
+      title: t("address"),
+      value: "Ayni 50/51, Dushanbe, Tajikistan",
+      href: null,
+    },
+    {
+      icon: Clock,
+      title: t("businessHours"),
+      value: t("businessHoursValue"),
+      href: null,
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -44,11 +53,10 @@ export default function ContactPage() {
         <Container size="lg">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-black text-[var(--foreground)] mb-6">
-              Contact Us
+              {t("title")}
             </h1>
             <p className="text-lg text-[var(--foreground-secondary)] leading-relaxed">
-              Have a project in mind or want to learn more about our services?
-              We&apos;d love to hear from you.
+              {t("subtitle")}
             </p>
           </div>
         </Container>
@@ -61,7 +69,7 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="bg-[var(--surface)] p-8 rounded-2xl border border-[var(--border)]">
               <h2 className="text-2xl font-bold text-[var(--foreground)] mb-6">
-                Send us a message
+                {t("sendMessage")}
               </h2>
               <ContactForm />
             </div>
@@ -70,11 +78,10 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-2xl font-bold text-[var(--foreground)] mb-6">
-                  Get in touch
+                  {t("getInTouch")}
                 </h2>
                 <p className="text-[var(--foreground-secondary)] mb-8">
-                  We&apos;re here to help and answer any questions you might have.
-                  We look forward to hearing from you.
+                  {t("helpText")}
                 </p>
               </div>
 

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/ui";
 import { BlogCard } from "@/components/cards";
 import { prisma } from "@/lib/prisma";
@@ -9,7 +10,15 @@ export const metadata: Metadata = {
     "Stay updated with the latest trends in technology, software development, and digital transformation.",
 };
 
-export default async function BlogPage() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function BlogPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("blog");
+
   const blogPosts = await prisma.blogPost.findMany({
     where: { published: true },
     orderBy: { publishedAt: "desc" },
@@ -22,11 +31,10 @@ export default async function BlogPage() {
         <Container size="lg">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-black text-[var(--foreground)] mb-6">
-              Our Blog
+              {t("title")}
             </h1>
             <p className="text-lg text-[var(--foreground-secondary)] leading-relaxed">
-              Insights, tutorials, and thought leadership from our team of
-              technology experts.
+              {t("subtitle")}
             </p>
           </div>
         </Container>
