@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 interface ContactEmailParams {
   firstName: string;
@@ -8,25 +8,34 @@ interface ContactEmailParams {
   message: string;
 }
 
-function getResendClient() {
-  if (!process.env.RESEND_API_KEY) {
+function getTransporter() {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
     return null;
   }
-  return new Resend(process.env.RESEND_API_KEY);
+
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT || "465"),
+    secure: process.env.SMTP_SECURE !== "false", // true for 465, false for 587
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
 }
 
 export async function sendContactNotification(params: ContactEmailParams) {
   const { firstName, lastName, email, subject, message } = params;
 
-  const resend = getResendClient();
-  if (!resend) {
-    console.log("RESEND_API_KEY not configured, skipping email notification");
+  const transporter = getTransporter();
+  if (!transporter) {
+    console.log("SMTP not configured, skipping email notification");
     return null;
   }
 
   try {
-    const { data, error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM || "ITL Solutions <onboarding@resend.dev>",
+    const info = await transporter.sendMail({
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: process.env.EMAIL_TO || "info@itlsolutions.net",
       subject: `New Contact: ${subject || "Contact Form Submission"}`,
       html: `
@@ -51,14 +60,10 @@ export async function sendContactNotification(params: ContactEmailParams) {
       `,
     });
 
-    if (error) {
-      console.error("Failed to send email:", error);
-      return null;
-    }
-
-    return data;
+    console.log("Email sent:", info.messageId);
+    return info;
   } catch (error) {
-    console.error("Email error:", error);
+    console.error("Failed to send email:", error);
     return null;
   }
 }
@@ -66,14 +71,14 @@ export async function sendContactNotification(params: ContactEmailParams) {
 export async function sendContactConfirmation(params: ContactEmailParams) {
   const { firstName, email } = params;
 
-  const resend = getResendClient();
-  if (!resend) {
+  const transporter = getTransporter();
+  if (!transporter) {
     return null;
   }
 
   try {
-    const { data, error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM || "ITL Solutions <onboarding@resend.dev>",
+    const info = await transporter.sendMail({
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: email,
       subject: "Thank you for contacting ITL Solutions",
       html: `
@@ -97,14 +102,10 @@ export async function sendContactConfirmation(params: ContactEmailParams) {
       `,
     });
 
-    if (error) {
-      console.error("Failed to send confirmation:", error);
-      return null;
-    }
-
-    return data;
+    console.log("Confirmation sent:", info.messageId);
+    return info;
   } catch (error) {
-    console.error("Email error:", error);
+    console.error("Failed to send confirmation:", error);
     return null;
   }
 }
