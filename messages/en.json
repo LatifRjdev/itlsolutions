@@ -136,5 +136,47 @@
     "error": "Error",
     "success": "Success",
     "back": "Back"
+  },
+  "legal": {
+    "lastUpdated": "Last Updated",
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms of Service",
+    "cookiesTitle": "Cookie Policy",
+    "privacy": {
+      "section1Title": "1. Information We Collect",
+      "section1Text": "We collect information you provide directly to us, such as when you fill out a contact form, request a quote, or communicate with us. This may include your name, email address, phone number, company name, and any other information you choose to provide.",
+      "section2Title": "2. How We Use Your Information",
+      "section2Text": "We use the information we collect to respond to your inquiries, provide our services, send you technical notices and support messages, and communicate with you about products, services, and events offered by ITL Solutions.",
+      "section3Title": "3. Information Sharing",
+      "section3Text": "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as necessary to provide our services or as required by law.",
+      "section4Title": "4. Data Security",
+      "section4Text": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+      "section5Title": "5. Contact Us",
+      "section5Text": "If you have any questions about this Privacy Policy, please contact us at"
+    },
+    "terms": {
+      "section1Title": "1. Acceptance of Terms",
+      "section1Text": "By accessing and using the ITL Solutions website and services, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.",
+      "section2Title": "2. Services",
+      "section2Text": "ITL Solutions provides IT consulting, software development, and related technology services. The specific terms of any engagement will be outlined in a separate service agreement.",
+      "section3Title": "3. Intellectual Property",
+      "section3Text": "All content on this website, including text, graphics, logos, and software, is the property of ITL Solutions and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.",
+      "section4Title": "4. Limitation of Liability",
+      "section4Text": "ITL Solutions shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of our services or website.",
+      "section5Title": "5. Contact Us",
+      "section5Text": "If you have any questions about these Terms of Service, please contact us at"
+    },
+    "cookies": {
+      "section1Title": "1. What Are Cookies",
+      "section1Text": "Cookies are small text files that are stored on your device when you visit our website. They help us provide you with a better experience by remembering your preferences and understanding how you use our site.",
+      "section2Title": "2. How We Use Cookies",
+      "section2Text": "We use cookies for essential website functionality, analytics to understand how visitors interact with our website, and to remember your preferences such as language settings.",
+      "section3Title": "3. Types of Cookies We Use",
+      "section3Text": "Essential cookies are necessary for the website to function properly. Analytics cookies help us understand how visitors use our website. Preference cookies remember your settings and choices.",
+      "section4Title": "4. Managing Cookies",
+      "section4Text": "You can control and manage cookies through your browser settings. Please note that disabling certain cookies may affect the functionality of our website.",
+      "section5Title": "5. Contact Us",
+      "section5Text": "If you have any questions about our Cookie Policy, please contact us at"
+    }
   }
 }
