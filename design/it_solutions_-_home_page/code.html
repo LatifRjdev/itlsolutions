@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IT Solutions - Home</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 bg-white dark:bg-[#1a2632] border-b border-[#f0f2f4] dark:border-gray-800">
+<div class="px-4 md:px-10 py-3 max-w-[1440px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-3xl">hexagon</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] dark:text-white">IT Solutions</h2>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300" href="#">Services</a>
+<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300" href="#">Portfolio</a>
+<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300" href="#">About</a>
+<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300" href="#">Contact</a>
+</nav>
+<button class="bg-primary hover:bg-blue-600 text-white text-sm font-bold h-10 px-6 rounded-lg transition-colors">
+                    Get a Quote
+                </button>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-[#111418] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative w-full">
+<div class="w-full h-[600px] bg-cover bg-center relative" data-alt="People working in a modern high-tech office environment" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4QQu8qIdD2WHBaxk-sED9OUJYb6sb4qoD7jWSeiVC2EmiLsab75TYCOX997FnZ6yRZXrLRq8ZHbhzer9so5eJQ_5jEW1KhHm6wn0b3RDWcwvmLxfJ7GNiUcDhcJzTL3rql2-KlHNKSpIzBhG0jWwS_y0yMnWFvt0xMswmms1VvaPwPmzEvPKmLRD78Gyr97Y3puNOUE7ijGy7WOzijI1nEBPN3OuYUkoUDHDOPmO89yUa0HHKmzTR4vGi6dgOjJF0996l8Othlsg');">
+<div class="absolute inset-0 flex items-center justify-center px-4">
+<div class="max-w-[960px] flex flex-col items-center text-center gap-6">
+<h1 class="text-white text-4xl md:text-6xl font-black leading-tight tracking-tight">
+                        Transforming Business through Technology
+                    </h1>
+<p class="text-gray-200 text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
+                        We deliver cutting-edge IT solutions, from cloud infrastructure to custom software development, designed to scale with your ambition.
+                    </p>
+<div class="flex flex-wrap gap-4 justify-center mt-4">
+<button class="bg-primary hover:bg-blue-600 text-white h-12 px-8 rounded-lg text-base font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                            Our Services
+                        </button>
+<button class="bg-white hover:bg-gray-100 text-[#111418] h-12 px-8 rounded-lg text-base font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                            View Portfolio
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack / Social Proof -->
+<section class="bg-white dark:bg-[#1a2632] border-b border-gray-100 dark:border-gray-800 py-8">
+<div class="max-w-[1200px] mx-auto px-4 overflow-hidden">
+<p class="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-6">Trusted by innovative companies</p>
+<div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Using Material Symbols as abstract logo placeholders for demo -->
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-300"><span class="material-symbols-outlined text-3xl">token</span> TechCorp</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-300"><span class="material-symbols-outlined text-3xl">diamond</span> Vertex</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-300"><span class="material-symbols-outlined text-3xl">change_history</span> Pyramid</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-300"><span class="material-symbols-outlined text-3xl">radio_button_checked</span> Orbit</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-300"><span class="material-symbols-outlined text-3xl">all_inclusive</span> Infinity</div>
+</div>
+</div>
+</section>
+<!-- Services Grid -->
+<section class="py-20 px-4 md:px-10 bg-background-light dark:bg-background-dark">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold mb-4">Our Expertise</h2>
+<p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">Comprehensive technology services tailored to modernize your operations and drive growth.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group bg-white dark:bg-[#1e2a36] p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">language</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Web Development</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Scalable, high-performance web applications built with modern frameworks like React and Next.js.</p>
+<a class="text-primary font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Learn more <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<!-- Card 2 -->
+<div class="group bg-white dark:bg-[#1e2a36] p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">smartphone</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Mobile Apps</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Native and cross-platform mobile solutions for iOS and Android that engage users on the go.</p>
+<a class="text-primary font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Learn more <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<!-- Card 3 -->
+<div class="group bg-white dark:bg-[#1e2a36] p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">design_services</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">UI/UX Design</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">User-centric interfaces and experiences that drive engagement and simplify complexity.</p>
+<a class="text-primary font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Learn more <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<!-- Card 4 -->
+<div class="group bg-white dark:bg-[#1e2a36] p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">cloud</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Cloud Solutions</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Secure migration, management, and optimization of cloud infrastructure on AWS and Azure.</p>
+<a class="text-primary font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Learn more <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<!-- Card 5 -->
+<div class="group bg-white dark:bg-[#1e2a36] p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">Cyber Security</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Proactive threat monitoring, vulnerability assessments, and enterprise-grade protection.</p>
+<a class="text-primary font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Learn more <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+<!-- Card 6 -->
+<div class="group bg-white dark:bg-[#1e2a36] p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">lightbulb</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white">IT Consulting</h3>
+<p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Strategic technology roadmapping to align your IT investment with business goals.</p>
+<a class="text-primary font-semibold text-sm mt-auto inline-flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Learn more <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-20 px-4 md:px-10 bg-white dark:bg-[#1a2632]">
+<div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 items-center">
+<div class="flex-1 space-y-8">
+<div>
+<span class="text-primary font-bold tracking-wider text-sm uppercase">Why Choose Us</span>
+<h2 class="text-3xl md:text-4xl font-black mt-2 text-[#111418] dark:text-white leading-tight">We build technology that builds your business.</h2>
+<p class="text-gray-500 dark:text-gray-300 mt-4">We don't just write code; we solve business problems. Our agile approach ensures transparency, speed, and quality in every deliverable.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="flex gap-4">
+<div class="shrink-0 size-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<h4 class="font-bold text-[#111418] dark:text-white">Expert Team</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400">Senior developers with 10+ years exp.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 size-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div>
+<h4 class="font-bold text-[#111418] dark:text-white">24/7 Support</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400">Always here when you need us.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 size-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<h4 class="font-bold text-[#111418] dark:text-white">Agile Process</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400">Rapid iterations and regular updates.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 size-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">paid</span>
+</div>
+<div>
+<h4 class="font-bold text-[#111418] dark:text-white">Transparent Pricing</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400">No hidden fees or surprise costs.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full">
+<div class="rounded-xl overflow-hidden shadow-2xl relative h-[400px] w-full bg-gray-200">
+<img alt="Team collaborating on a project in a modern meeting room" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaVLsvA6yNqQ_0TSDjnV-Kr9pSm0ukpDi_q3K-yIyvM-Igpjwk4jypCZ1Z54nGo1LKtQSgGK8jHaLFPfGhfdIJLsRokgYUoikEVaRZoPbGYkDlthVnHM4gkttCjCJGffGL6Ash_IdPwGbB_cDNOBLwNFezQdOGdutkeLML8zL1ngyCcRDD4L5jYoXpw6usiVujNaWrwN-Q5LgmamfQy8RTpKGK9IqmDKj4D0gSlYQJxu8CG0Q8XWKybCM8uJZvzgZZtmIGf2HF7Ho"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-16 bg-primary text-white">
+<div class="max-w-[1200px] mx-auto px-4">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/20">
+<div class="p-4">
+<div class="text-4xl md:text-5xl font-black tracking-tight mb-2">250+</div>
+<div class="text-sm font-medium opacity-90 uppercase tracking-wider">Clients Worldwide</div>
+</div>
+<div class="p-4">
+<div class="text-4xl md:text-5xl font-black tracking-tight mb-2">500+</div>
+<div class="text-sm font-medium opacity-90 uppercase tracking-wider">Projects Delivered</div>
+</div>
+<div class="p-4">
+<div class="text-4xl md:text-5xl font-black tracking-tight mb-2">15</div>
+<div class="text-sm font-medium opacity-90 uppercase tracking-wider">Industry Awards</div>
+</div>
+<div class="p-4">
+<div class="text-4xl md:text-5xl font-black tracking-tight mb-2">98%</div>
+<div class="text-sm font-medium opacity-90 uppercase tracking-wider">Client Retention</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section class="py-20 px-4 md:px-10 bg-background-light dark:bg-background-dark">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+<div>
+<h2 class="text-[#111418] dark:text-white text-3xl md:text-4xl font-bold mb-2">Featured Projects</h2>
+<p class="text-gray-500 dark:text-gray-400">See how we've helped companies transform their vision into reality.</p>
+</div>
+<button class="flex items-center gap-2 text-primary font-bold hover:underline">
+                    View all projects <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-gray-200 aspect-[4/3] mb-4">
+<img alt="Dashboard interface on a tablet for a fintech application" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6otnRhx-FSqYYn8ueGfQ65tK1H45hK2--tMrlZhckzhas4Y9r5hdgbAJ-fjuCY9AUuTm7qG4T_LExIXiZ62bMVF87avIQBYC7n6R4MsYQ8geqkV1AYNSXTiD5uCBjp7UqcUx_5CghwYCb0d7HqtrQcR8dc3QYJLbPZrCOApLeVp4cTpRJ9lWa-tINQPrJdKY3ADv35jxKd7Pdw7eKHfr9ajceLRbHx-PBvS_41_96AsveTPsEtjTRHWE9uiheJs5fw-ql-DC2_9o"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<span class="bg-white text-black px-4 py-2 rounded-full font-bold text-sm">View Case Study</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-primary text-xs font-bold rounded uppercase tracking-wider">Fintech</span>
+<span class="text-gray-400 text-xs">Mobile App</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white group-hover:text-primary transition-colors">NeoBank Mobile Experience</h3>
+</article>
+<!-- Project 2 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-gray-200 aspect-[4/3] mb-4">
+<img alt="Data visualization graphs on a laptop screen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8siVd3i_S5A1uCfKXUN4vydL5PkN7TRiQLJM4Gr-3q9Tx1DBNhtIzyc-1ylSVaYNsQnbYL8x3LkOvnFj6ra1cQx1ysIBXY_IKdpwuHcrFKdZxAWKVMMXEMoKG1Stk3d1Y5Tc-DaKJvUio8Ft1texR2sZrKcuKu3N_PQHod8O_PbfT4ex43mw6u7xQo5SVp6DiDXG8Q1d0Z-LmhF-g0Whc7jGF9WwneofdDTlNChyf8yaYibikOC1JKGSM6e--q8R5bR3rwz62Wbk"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<span class="bg-white text-black px-4 py-2 rounded-full font-bold text-sm">View Case Study</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-primary text-xs font-bold rounded uppercase tracking-wider">Analytics</span>
+<span class="text-gray-400 text-xs">SaaS Dashboard</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white group-hover:text-primary transition-colors">Enterprise Data Platform</h3>
+</article>
+<!-- Project 3 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-gray-200 aspect-[4/3] mb-4">
+<img alt="E-commerce mobile application showcasing products" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeG7SvT-OD2Trti9syiGoTld4u-Zov3_wIZ_EfKv8RB5ZZppiNwaZ51NJtxTT59TW3L-05xgXFsp0v9iCV4HwOFXRRXO-mMa2HRA7_NIml4NDlzC2niwdVn16OxkcQ978wjxeTOf4XzogPl9hfVS9F5RInx36RP3CDG0wWoZ05aodwJ5ZfsNJ7gxCPL71tmNu4sTLQ_tH_VpNGzvzb9huaqCrjmA-x19QK7Bjv3w-FpOeOqc3KVSWEPK50oQjiFI3fNyKoW4-mc-Y"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<span class="bg-white text-black px-4 py-2 rounded-full font-bold text-sm">View Case Study</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-primary text-xs font-bold rounded uppercase tracking-wider">E-Commerce</span>
+<span class="text-gray-400 text-xs">Web Platform</span>
+</div>
+<h3 class="text-xl font-bold text-[#111418] dark:text-white group-hover:text-primary transition-colors">Global Retail Storefront</h3>
+</article>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-20 px-4 md:px-10 bg-white dark:bg-[#1a2632]">
+<div class="max-w-[1200px] mx-auto text-center">
+<h2 class="text-3xl font-bold mb-12 text-[#111418] dark:text-white">Client Success Stories</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-background-light dark:bg-background-dark p-8 rounded-xl text-left relative">
+<span class="material-symbols-outlined text-4xl text-primary/30 absolute top-6 left-6">format_quote</span>
+<p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10 pt-6">"IT Solutions completely transformed our legacy systems. The migration to the cloud was seamless, and we've seen a 40% increase in operational efficiency since launch."</p>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-300 bg-cover bg-center" data-alt="Portrait of a male client" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDf104OB1ll7himo27Y3j_CFHHU5ZlK_p9oDdkLIxmgiNwxfi7AGR1uokR71R_luBJsmtbmXNIRhCD7Pgv3pu8daFclgVr3NswhOBW9kmDm0Qkx4BoYBdkZWFsg6YS3W6uL9nlelkvaCKWv4fXVj4mCkzadn4ZbvxwC8mVeaR82sy48ABm0YYECMTBRXLTsDrX6lrtUA0nJsYzfNK-rRzgDcftKc06g8uyOiq2Ph-4QrDl9uVBmbm_0ttVNmj53moxsGngdabYtwb4')"></div>
+<div>
+<div class="font-bold text-sm text-[#111418] dark:text-white">David Miller</div>
+<div class="text-xs text-gray-500">CTO, FinTech Global</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-background-light dark:bg-background-dark p-8 rounded-xl text-left relative">
+<span class="material-symbols-outlined text-4xl text-primary/30 absolute top-6 left-6">format_quote</span>
+<p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10 pt-6">"Their team is incredible. They understood our complex requirements perfectly and delivered a custom mobile app that our customers absolutely love. Highly recommended."</p>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-300 bg-cover bg-center" data-alt="Portrait of a female client" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWPxKTwZbJHu1fOHGsCHI8g4lTOYERFCrlk66UREgve8dUd1N4uWRfvzaU4qFn8XqmwaGhEg3GZ_106FqClT4RM6jse_92ZEiOT17GDaM4Ck8JeRZtb6TPL0yn8OGAh-79LTsNIjvltOOtgf137X_APgyXSD97ls8r_Fq8_ER43GABg53W6tb8HH6QRlAmv5XghJeX7M34l1zX4nor8QJ8ElOcXNjfWr_eecH9MKNI_QUJOPq4NjleNhHtEfxqLGHBFvmHrqqVkX0')"></div>
+<div>
+<div class="font-bold text-sm text-[#111418] dark:text-white">Sarah Jenkins</div>
+<div class="text-xs text-gray-500">CEO, RetailPlus</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-background-light dark:bg-background-dark p-8 rounded-xl text-left relative">
+<span class="material-symbols-outlined text-4xl text-primary/30 absolute top-6 left-6">format_quote</span>
+<p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10 pt-6">"Security was our biggest concern. The IT Solutions team conducted a thorough audit and implemented a robust cybersecurity framework that gives us peace of mind."</p>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-gray-300 bg-cover bg-center" data-alt="Portrait of a male client" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_KFIaPq8yNK8SaVvIRTzBDfoD2G7Sg4Bvdz1Q6bd7ngB5wwhDhCoT12QgwX8BfB2Q3fYnPMYRUEtCtt4U8vj879hJxv4JUubUdsCAV0Wkzbs69kkcqe-FnIcgoj1dVqSF9xXkwhoY64RMXoDODPERbMsSljWyqYJ370Q_jnzK49Afp__CxSCaHGD2yEBmjPgvpjDnO9zghijaoVUqIGT078S1HFJKAWwIUFQKhNtwl7hSv3T6Isj_uNJs8ZpErW5uFdsGAF9tJrg')"></div>
+<div>
+<div class="font-bold text-sm text-[#111418] dark:text-white">Michael Chang</div>
+<div class="text-xs text-gray-500">Director of Ops, SecureNet</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact CTA Footer -->
+<section class="py-20 px-4 md:px-10 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800">
+<div class="max-w-[1000px] mx-auto bg-white dark:bg-[#1e2a36] rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+<div class="flex-1 p-10 bg-primary text-white flex flex-col justify-between relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white opacity-5"></div>
+<div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-white opacity-5"></div>
+<div class="relative z-10">
+<h2 class="text-3xl font-bold mb-4">Ready to start your next project?</h2>
+<p class="text-blue-100 mb-8">Let's discuss how we can help your business grow with our custom IT solutions.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">mail</span>
+<span>hello@itsolutions.com</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">call</span>
+<span>+1 (555) 123-4567</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">location_on</span>
+<span>123 Tech Park, Silicon Valley, CA</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 p-10">
+<form class="flex flex-col gap-4">
+<h3 class="text-xl font-bold text-[#111418] dark:text-white mb-2">Send us a message</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-gray-500 dark:text-gray-400">First Name</label>
+<input class="h-10 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="John" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-gray-500 dark:text-gray-400">Last Name</label>
+<input class="h-10 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Doe" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-gray-500 dark:text-gray-400">Email Address</label>
+<input class="h-10 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="john@company.com" type="email"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-gray-500 dark:text-gray-400">Message</label>
+<textarea class="h-24 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 p-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none" placeholder="Tell us about your project needs..."></textarea>
+</div>
+<button class="bg-primary hover:bg-blue-600 text-white font-bold h-10 rounded mt-2 transition-colors">
+                        Send Message
+                    </button>
+</form>
+</div>
+</div>
+<footer class="max-w-[1200px] mx-auto mt-20 pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+<div>© 2023 IT Solutions Inc. All rights reserved.</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Cookies</a>
+</div>
+</footer>
+</section>
+</body></html>

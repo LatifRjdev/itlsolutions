@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IT Solutions - Our Team</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-[#111418] dark:text-white overflow-x-hidden transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-background-dark px-6 py-3 lg:px-10">
+<div class="mx-auto flex max-w-[1280px] items-center justify-between whitespace-nowrap">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-2xl">dns</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">IT Solutions</h2>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden flex-1 justify-end gap-8 md:flex">
+<div class="flex items-center gap-9">
+<a class="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Services</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Our Team</a>
+<a class="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Careers</a>
+<a class="text-[#111418] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Get in Touch</span>
+</button>
+</div>
+<!-- Mobile Menu Button (Icon Only) -->
+<div class="flex md:hidden">
+<button class="text-[#111418] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<div class="layout-container flex h-full grow flex-col">
+<div class="w-full flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1280px] w-full flex-1 px-4 md:px-6 lg:px-8">
+<!-- Page Heading -->
+<div class="flex flex-col gap-6 py-10 md:py-16 text-center md:text-left">
+<div class="max-w-3xl">
+<h1 class="text-[#111418] dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
+                                    The People Behind IT Solutions
+                                </h1>
+<p class="text-[#617589] dark:text-gray-400 text-lg font-normal leading-relaxed max-w-2xl">
+                                    We are a team of strategists, designers, and developers dedicated to building digital products that matter. Our diverse backgrounds fuel innovation.
+                                </p>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="sticky top-[65px] z-40 -mx-4 px-4 md:mx-0 md:px-0 py-4 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm">
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="group flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-5 pr-5 transition-all">
+<p class="text-white text-sm font-bold leading-normal">All</p>
+</button>
+<button class="group flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-gray-800 border border-[#e5e7eb] dark:border-gray-700 pl-5 pr-5 hover:border-primary hover:text-primary transition-all">
+<p class="text-[#111418] dark:text-gray-300 group-hover:text-primary text-sm font-medium leading-normal">Management</p>
+</button>
+<button class="group flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-gray-800 border border-[#e5e7eb] dark:border-gray-700 pl-5 pr-5 hover:border-primary hover:text-primary transition-all">
+<p class="text-[#111418] dark:text-gray-300 group-hover:text-primary text-sm font-medium leading-normal">Developers</p>
+</button>
+<button class="group flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-gray-800 border border-[#e5e7eb] dark:border-gray-700 pl-5 pr-5 hover:border-primary hover:text-primary transition-all">
+<p class="text-[#111418] dark:text-gray-300 group-hover:text-primary text-sm font-medium leading-normal">Designers</p>
+</button>
+<button class="group flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-gray-800 border border-[#e5e7eb] dark:border-gray-700 pl-5 pr-5 hover:border-primary hover:text-primary transition-all">
+<p class="text-[#111418] dark:text-gray-300 group-hover:text-primary text-sm font-medium leading-normal">Marketing</p>
+</button>
+</div>
+</div>
+<!-- Team Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 py-6">
+<!-- Card 1 -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm hover:shadow-md transition-all group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/5] bg-cover rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<div class="w-full h-full bg-cover bg-center" data-alt="Professional headshot of Sarah Jenkins smiling in an office setting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAahgKVxuM6-R7QR_PQCO-81gNhyGAGq9pK2XvSzguWZpaFgxhXuPumANQ8RiQL92hxX6mDNWXnKhW84fb7Nq1yUM791yk7fweslQCfpwQ-wBhiZd1c6dlgFMhjhJPzfS_0IuKeMxrM_6PK58Z5tOPYlmT9ArOKRiIVWVzV4RKaaQA_B-NYGha0r-heqxb81dPUTCm3Rl6D3xJCJVqDl7kcTcDhVRv_BlER_mCy0J7-Ks2shnmoM0iCUOQMQfcr0ofB6If6Vh5XsIc");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Sarah Jenkins</p>
+<p class="text-primary text-sm font-semibold leading-normal">Lead Frontend Developer</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed mt-2 line-clamp-3">Sarah specializes in React architecture and UI performance. She ensures our apps are lightning fast.</p>
+</div>
+<div class="flex gap-4 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+<a aria-label="LinkedIn" class="text-gray-400 hover:text-[#0077b5] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</a>
+<a aria-label="GitHub" class="text-gray-400 hover:text-black dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm hover:shadow-md transition-all group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/5] bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Professional headshot of David Kim wearing glasses and looking confident" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfVnFyHTNmI18N8m6JJjwzNv63f07Dci24-kLHQFnGFDTqBACpnejZVzJCJVlnN_Pfl0ejNGpR2rm3fVyWwT8bMnQ57ctti1r2FAZm3LcRk2mwVQ17_GTN7QeYmgR3zJmtUyg0ih0OZPzq9_ZcyUJrwUsLsLOTco5dtqQ2bQkpdDU_M8jpt5QUr3CJURAf6Pu7MN4YM8s2xQ4NIbM0GTiyKxU6atQbwlgN1WN-JMiiXo6igtEJfrafhNHWpQNzhrkaUetvm90ei8Q");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">David Kim</p>
+<p class="text-primary text-sm font-semibold leading-normal">CTO</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed mt-2 line-clamp-3">David leads our tech strategy with 15 years of experience building scalable enterprise systems.</p>
+</div>
+<div class="flex gap-4 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+<a class="text-gray-400 hover:text-[#0077b5] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</a>
+<a class="text-gray-400 hover:text-black dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm hover:shadow-md transition-all group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/5] bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Professional headshot of Elena Rodriguez smiling in a creative studio" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCVezW41daHFZ93qHut37fpftmJlZAp2Hd-kjaZica4Z_rCjK5Cf4fMvbKs8jVwLstUCbtY4q_kqvhmeExPI7oLOo21M8nUR_ZHuv4OlfdWqVa89mq8Cm1hzWKM1v4HA0IuHRUkTrt2d0J_bXeT3eJ5mwlCaf4v26ZaLLejpFR4-UrZ0AI9Wr01N0cg4ee1-LoZX0QghTWVPdL4yOn_Gtm-eBdsV3_6Nl3LLadV5S4YVNaK_v8-zxzc4wBOR08qqhdLWh6iggkirKw");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Elena Rodriguez</p>
+<p class="text-primary text-sm font-semibold leading-normal">Product Designer</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed mt-2 line-clamp-3">Elena crafts intuitive interfaces for complex problems, focusing on user-centered design principles.</p>
+</div>
+<div class="flex gap-4 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+<a class="text-gray-400 hover:text-[#0077b5] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</a>
+<a class="text-gray-400 hover:text-[#ea4c89] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+</a>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm hover:shadow-md transition-all group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/5] bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Professional headshot of Michael Chang in a casual button down shirt" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDx1hy9lFB9QUodGOMn6wyZ5aGD1XrB0pkr7GNWW2pjbo2HkWOGRdhj8S9ttcj9lrg3O-z2CQG0SfATtWRp_RJ-h5kAz6-91pxX0nhfd8yZx-6aXId0axBKi6BLeWfDG0ItMQdiUj7iRjFj1eo3IWKUqxRa76bsQpzE0gQySycfkPKEY1BaMaWzhaKk0Q1gb-VHoefVozeto1Vw__FR1VOXfbv1_c4G9E35VQef3wUBB3OWExskyZYym-FUpAhypOXEk19bP6YSnA0");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Michael Chang</p>
+<p class="text-primary text-sm font-semibold leading-normal">Backend Engineer</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed mt-2 line-clamp-3">Michael ensures our systems are scalable and secure. He is an expert in Python and Go.</p>
+</div>
+<div class="flex gap-4 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+<a class="text-gray-400 hover:text-[#0077b5] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</a>
+<a class="text-gray-400 hover:text-black dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</a>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm hover:shadow-md transition-all group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/5] bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Professional headshot of Jessica Alvarez in business attire" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbFkOHNhXSJSsCHP9idN978IomKOZBPxe2354bU8vLsfpVSuo3jw5YAf0hOYt37ZrY5l1zvxl-b2awHjEbU3g10KMDCwGvBT_N3mO7x7xP6lKTXkr6DCfjXrEOmdG5NTsoURPbGeYjbv361TnJv30qJ43sD6IkYZQ1V1ubXdVzuzLPI8N8Y21JUePjexgS0SXPWjjrdHVJu-dC8LwI-GkCThUEPZxdNFVnbhJntYvldZGTwR-4POb1XFScBFRjc7I9WOZYHQgCa6w");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Jessica Alvarez</p>
+<p class="text-primary text-sm font-semibold leading-normal">HR Manager</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed mt-2 line-clamp-3">Jessica fosters our inclusive and dynamic culture, making sure every team member feels heard.</p>
+</div>
+<div class="flex gap-4 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+<a class="text-gray-400 hover:text-[#0077b5] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</a>
+<a class="text-gray-400 hover:text-blue-500 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+</a>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm hover:shadow-md transition-all group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/5] bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Professional headshot of Tom Baker with a thoughtful expression" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5y_dvTv7Al4uXQalLIulApWgwrimccgfrNW0cgY6mxMGPrU9QqTxXbj-0S9wi-pu3u8P2q6c1i-lf04mSTqSAtxZGgdBxQUM2t2pfqVU4At3ZKZ97rkhO8HhnFi7ye5qLdh0GjONRrI660pEJPOaDwTBkocB8ijMdvA5Sw7IqH_6G_A-FDMqSjPN9hAZErukI2VtrySOyroXD-XfjenD64M7j_kkIiPG7HJaGqI8aX7GBCcz09QvFQm3FWsQ_jldoywQ3POYtwss");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Tom Baker</p>
+<p class="text-primary text-sm font-semibold leading-normal">UX Researcher</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed mt-2 line-clamp-3">Tom uncovers user needs to drive product decisions through extensive field research.</p>
+</div>
+<div class="flex gap-4 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+<a class="text-gray-400 hover:text-[#0077b5] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</a>
+<a class="text-gray-400 hover:text-orange-500 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</a>
+</div>
+</div>
+<!-- Card 7 -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm hover:shadow-md transition-all group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/5] bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Professional headshot of Amanda Cole smiling brightly" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBc52O4NHuwJEafj4JSk-86IojdulAs3omR-2RN9_M9uqi4WRgOKYsIpsrMUNzWVGZl3z8aBJKEZ7wIDLIY-_IzgRQ7ViyPvNqBkbq5GglYNYzrV3_e9i0Mz0E2U9uotqPMPFrW0UgU1f_NYmR8sZxNnhiPZb96NTKE27uwBI_1hbTh-eK3btvGTcyE1vDrB32w5JsQvm4grf00BKOKdXD0qMv7ypmjTLQujRFPcgSNmSERBjUsiEDLAa2CH2KpniwFCDiC16l88qo");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Amanda Cole</p>
+<p class="text-primary text-sm font-semibold leading-normal">Marketing Lead</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed mt-2 line-clamp-3">Amanda tells our story to the world, managing our brand presence across all digital channels.</p>
+</div>
+<div class="flex gap-4 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+<a class="text-gray-400 hover:text-[#0077b5] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</a>
+<a class="text-gray-400 hover:text-pink-500 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">campaign</span>
+</a>
+</div>
+</div>
+<!-- Card 8 -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 shadow-sm hover:shadow-md transition-all group">
+<div class="w-full bg-center bg-no-repeat aspect-[4/5] bg-cover rounded-lg overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Professional headshot of Robert Fox wearing headphones" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCL6ZXYWwiwwx7CSlXr1HoVyRGqhyBiYwUyB0RgC2dt7Eht51PqbVYzSnLbbiDqKhmXwkD9lPaDaUlAbuR3GLFZom7LGNarQwbOyRcTpxGxnGWKfOuAcmMIJlMOtoVmMu85rE-MEp_C_PqehszpyVEDumZuvYxkUJhJzyud-87iX63ewDvxjDLYqMGI2G2k6oKQlaAJ0lCoxp1fNBSo18uhrnExehb4g7J77y8hUYzrQz7wH9o--lZqrE8PpqcirK4wXShso1qco8g");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[#111418] dark:text-white text-lg font-bold leading-tight">Robert Fox</p>
+<p class="text-primary text-sm font-semibold leading-normal">DevOps Engineer</p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-relaxed mt-2 line-clamp-3">Robert keeps our infrastructure robust and reliable, automating deployments and monitoring.</p>
+</div>
+<div class="flex gap-4 mt-auto pt-2 border-t border-gray-100 dark:border-gray-700">
+<a class="text-gray-400 hover:text-[#0077b5] transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</a>
+<a class="text-gray-400 hover:text-black dark:hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</a>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="mt-10 mb-20">
+<div class="relative overflow-hidden rounded-2xl bg-[#111418] dark:bg-gray-800 px-6 py-16 md:px-20 text-center shadow-lg">
+<!-- Abstract Background Element -->
+<div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-blue-500/20 blur-3xl"></div>
+<div class="relative z-10 flex flex-col items-center gap-6">
+<h2 class="max-w-2xl text-3xl font-black leading-tight tracking-tight text-white md:text-4xl">
+                                        Interested in joining our team?
+                                    </h2>
+<p class="max-w-xl text-lg text-gray-400">
+                                        We are always looking for talented individuals to help us build the future. Check out our open roles today.
+                                    </p>
+<div class="mt-4 flex flex-col gap-3 sm:flex-row">
+<button class="inline-flex h-12 min-w-[160px] items-center justify-center rounded-lg bg-primary px-6 text-base font-bold text-white transition-transform hover:scale-105 active:scale-95">
+                                            View Open Roles
+                                        </button>
+<button class="inline-flex h-12 min-w-[160px] items-center justify-center rounded-lg border border-gray-600 bg-transparent px-6 text-base font-bold text-white transition-colors hover:bg-gray-700">
+                                            Contact Us
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="border-t border-[#f0f2f4] dark:border-gray-800 bg-white dark:bg-background-dark py-12 px-6 lg:px-10">
+<div class="mx-auto flex max-w-[1280px] flex-col gap-8 md:flex-row md:justify-between">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">dns</span>
+</div>
+<h2 class="text-lg font-bold">IT Solutions</h2>
+</div>
+<p class="text-sm text-[#617589] dark:text-gray-400 max-w-xs">Building the digital future with precision, passion, and people.</p>
+</div>
+<div class="flex flex-wrap gap-12 text-sm text-[#111418] dark:text-gray-300">
+<div class="flex flex-col gap-3">
+<h3 class="font-bold text-[#111418] dark:text-white">Company</h3>
+<a class="hover:text-primary" href="#">About</a>
+<a class="hover:text-primary" href="#">Careers</a>
+<a class="hover:text-primary" href="#">Blog</a>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="font-bold text-[#111418] dark:text-white">Services</h3>
+<a class="hover:text-primary" href="#">Development</a>
+<a class="hover:text-primary" href="#">Design</a>
+<a class="hover:text-primary" href="#">Strategy</a>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="font-bold text-[#111418] dark:text-white">Social</h3>
+<a class="hover:text-primary" href="#">LinkedIn</a>
+<a class="hover:text-primary" href="#">Twitter</a>
+<a class="hover:text-primary" href="#">GitHub</a>
+</div>
+</div>
+</div>
+<div class="mx-auto mt-12 max-w-[1280px] border-t border-[#f0f2f4] dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#617589] dark:text-gray-500">
+<p>© 2024 IT Solutions Inc. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
