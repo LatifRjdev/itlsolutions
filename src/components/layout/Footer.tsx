@@ -12,10 +12,9 @@ const footerLinks = {
   ],
   company: [
     { name: "About Us", href: "/about" },
-    { name: "Our Team", href: "/team" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Blog", href: "/blog" },
-    { name: "Careers", href: "/careers" },
+    { name: "Contact", href: "/contact" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
@@ -54,22 +53,22 @@ export function Footer() {
             {/* Contact Info */}
             <div className="space-y-3">
               <a
-                href="mailto:hello@itlsolutions.net"
+                href="mailto:info@itlsolutions.net"
                 className="flex items-center gap-3 text-sm text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                hello@itlsolutions.net
+                info@itlsolutions.net
               </a>
               <a
-                href="tel:+15551234567"
+                href="tel:+992557777509"
                 className="flex items-center gap-3 text-sm text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                +1 (555) 123-4567
+                +992 557 777 509
               </a>
               <div className="flex items-center gap-3 text-sm text-[var(--foreground-secondary)]">
                 <MapPin className="w-4 h-4" />
-                123 Tech Park, Silicon Valley, CA
+                Ayni 50/51, Dushanbe, Tajikistan
               </div>
             </div>
           </div>

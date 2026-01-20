@@ -27,7 +27,7 @@ export async function sendContactNotification(params: ContactEmailParams) {
   try {
     const { data, error } = await resend.emails.send({
       from: process.env.EMAIL_FROM || "ITL Solutions <onboarding@resend.dev>",
-      to: process.env.EMAIL_TO || "admin@itlsolutions.net",
+      to: process.env.EMAIL_TO || "info@itlsolutions.net",
       subject: `New Contact: ${subject || "Contact Form Submission"}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

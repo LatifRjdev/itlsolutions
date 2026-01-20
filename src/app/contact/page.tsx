@@ -13,19 +13,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "hello@itlsolutions.net",
-    href: "mailto:hello@itlsolutions.net",
+    value: "info@itlsolutions.net",
+    href: "mailto:info@itlsolutions.net",
   },
   {
     icon: Phone,
     title: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: "+992 557 777 509",
+    href: "tel:+992557777509",
   },
   {
     icon: MapPin,
     title: "Address",
-    value: "123 Tech Park, Silicon Valley, CA 94025",
+    value: "Ayni 50/51, Dushanbe, Tajikistan",
     href: null,
   },
   {
@@ -109,7 +109,7 @@ export default function ContactPage() {
               {/* Map */}
               <div className="bg-[var(--surface)] rounded-xl overflow-hidden border border-[var(--border)] h-64">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101223.02517846919!2d-122.18346984242845!3d37.38837199648534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb68ad0cfc739%3A0x7eb356b66bd4b50e!2sSilicon%20Valley!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3139.7769897837897!2d68.77396831531883!3d38.56045497962231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38b5d16736208381%3A0x8c97a1c1d4a46e8a!2sAyni%20St%2C%20Dushanbe%2C%20Tajikistan!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
