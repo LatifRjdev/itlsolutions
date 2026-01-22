@@ -793,7 +793,7 @@ async function main() {
   const blogPosts = [
     {
       slug: "future-of-cloud-computing",
-      title: "The Future of Cloud Computing in 2024",
+      title: "The Future of Cloud Computing in 2026",
       excerpt: "Explore the emerging trends in cloud computing, from edge computing to serverless architectures.",
       content: `Cloud computing continues to evolve at a rapid pace. In this article, we explore the key trends shaping the future of cloud technology.
 
@@ -812,7 +812,7 @@ Cloud providers are making AI and ML more accessible through pre-built models an
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
       readTime: 8,
       published: true,
-      publishedAt: new Date("2024-01-15"),
+      publishedAt: new Date("2026-01-15"),
     },
     {
       slug: "ai-in-software-development",
@@ -835,11 +835,11 @@ While AI augments developer capabilities, human creativity and judgment remain e
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
       readTime: 6,
       published: true,
-      publishedAt: new Date("2024-01-10"),
+      publishedAt: new Date("2026-01-10"),
     },
     {
       slug: "cybersecurity-best-practices",
-      title: "Essential Cybersecurity Best Practices for 2024",
+      title: "Essential Cybersecurity Best Practices for 2026",
       excerpt: "Protect your business with these proven cybersecurity strategies and tools.",
       content: `With cyber threats becoming more sophisticated, staying protected requires a proactive approach.
 
@@ -861,7 +861,7 @@ Encrypt sensitive data both at rest and in transit. Use strong encryption standa
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
       readTime: 10,
       published: true,
-      publishedAt: new Date("2024-01-05"),
+      publishedAt: new Date("2026-01-05"),
     },
     {
       slug: "microservices-architecture",
@@ -887,11 +887,11 @@ Containerization with Kubernetes has become the standard. Implement comprehensiv
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
       readTime: 12,
       published: true,
-      publishedAt: new Date("2023-12-28"),
+      publishedAt: new Date("2025-12-28"),
     },
     {
-      slug: "react-vs-vue-2024",
-      title: "React vs Vue in 2024: Which to Choose?",
+      slug: "react-vs-vue-2026",
+      title: "React vs Vue in 2026: Which to Choose?",
       excerpt: "An in-depth comparison of the two popular frontend frameworks for modern web development.",
       content: `Both React and Vue are excellent choices for building modern web applications. Here's how they compare.
 
@@ -913,7 +913,7 @@ Choose React for larger teams and complex applications. Choose Vue for faster de
       image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80",
       readTime: 7,
       published: true,
-      publishedAt: new Date("2023-12-20"),
+      publishedAt: new Date("2025-12-20"),
     },
     {
       slug: "devops-automation",
@@ -939,7 +939,7 @@ Integrate security scanning into your pipeline. Use SAST, DAST, and dependency s
       image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80",
       readTime: 9,
       published: true,
-      publishedAt: new Date("2023-12-15"),
+      publishedAt: new Date("2025-12-15"),
     },
   ];
 
