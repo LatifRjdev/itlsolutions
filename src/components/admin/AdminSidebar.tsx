@@ -9,6 +9,7 @@ import {
   Users,
   FolderOpen,
   FileText,
+  MessageSquare,
   Mail,
   LogOut,
   Home,
@@ -17,11 +18,12 @@ import {
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/email", label: "Email", icon: Mail },
   { href: "/admin/services", label: "Services", icon: Briefcase },
   { href: "/admin/team", label: "Team", icon: Users },
   { href: "/admin/portfolio", label: "Portfolio", icon: FolderOpen },
   { href: "/admin/blog", label: "Blog", icon: FileText },
-  { href: "/admin/contacts", label: "Contacts", icon: Mail },
+  { href: "/admin/contacts", label: "Contacts", icon: MessageSquare },
 ];
 
 export function AdminSidebar() {

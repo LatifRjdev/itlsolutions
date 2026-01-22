@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { prisma } from "./prisma";
 
 interface ContactEmailParams {
   firstName: string;
@@ -6,6 +7,17 @@ interface ContactEmailParams {
   email: string;
   subject?: string;
   message: string;
+}
+
+interface SendEmailParams {
+  to: string[];
+  cc?: string[];
+  bcc?: string[];
+  subject: string;
+  html: string;
+  text?: string;
+  inReplyTo?: string;
+  references?: string[];
 }
 
 function getTransporter() {
@@ -108,4 +120,48 @@ export async function sendContactConfirmation(params: ContactEmailParams) {
     console.error("Failed to send confirmation:", error);
     return null;
   }
+}
+
+export async function sendEmail(params: SendEmailParams) {
+  const transporter = getTransporter();
+  if (!transporter) {
+    throw new Error("SMTP not configured");
+  }
+
+  const { to, cc, bcc, subject, html, text, inReplyTo, references } = params;
+
+  const info = await transporter.sendMail({
+    from: process.env.SMTP_FROM || process.env.SMTP_USER,
+    to: to.join(", "),
+    cc: cc?.join(", "),
+    bcc: bcc?.join(", "),
+    subject,
+    html,
+    text: text || html.replace(/<[^>]*>/g, ""),
+    inReplyTo,
+    references: references?.join(" "),
+  });
+
+  // Store in database as sent email
+  await prisma.email.create({
+    data: {
+      messageId: info.messageId || `sent-${Date.now()}`,
+      uid: 0,
+      folder: "Sent",
+      from: process.env.SMTP_USER || "",
+      fromName: "ITL Solutions",
+      to,
+      cc: cc || [],
+      subject,
+      htmlBody: html,
+      textBody: text || html.replace(/<[^>]*>/g, ""),
+      snippet: (text || html.replace(/<[^>]*>/g, "")).substring(0, 200),
+      isRead: true,
+      inReplyTo: inReplyTo || null,
+      references: references || [],
+      date: new Date(),
+    },
+  });
+
+  return info;
 }
