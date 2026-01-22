@@ -952,6 +952,109 @@ Integrate security scanning into your pipeline. Use SAST, DAST, and dependency s
   }
   console.log("Blog posts seeded:", blogPosts.length);
 
+  // Seed FAQ items
+  const faqItems = [
+    {
+      question: "What services does ITL Solutions offer?",
+      answer: "We offer a comprehensive range of IT services including: Web Development (React, Next.js, Node.js), Mobile App Development (iOS, Android, React Native), UI/UX Design, Cloud Solutions (AWS, Azure), Cybersecurity services, and IT Consulting. We work with businesses of all sizes, from startups to enterprises.",
+      questionRu: "Какие услуги предоставляет ITL Solutions?",
+      answerRu: "Мы предлагаем полный спектр IT-услуг, включая: Веб-разработку (React, Next.js, Node.js), Разработку мобильных приложений (iOS, Android, React Native), UI/UX дизайн, Облачные решения (AWS, Azure), Услуги кибербезопасности и IT-консалтинг. Мы работаем с компаниями любого размера, от стартапов до крупных предприятий.",
+      category: "Services",
+      sortOrder: 0,
+      isActive: true,
+    },
+    {
+      question: "How long does a typical project take?",
+      answer: "Project timelines vary based on scope and complexity. A simple website typically takes 2-4 weeks, while a custom web application may take 2-4 months. Mobile apps usually require 3-6 months. During our initial consultation, we'll provide a detailed timeline specific to your project requirements.",
+      questionRu: "Сколько времени занимает типичный проект?",
+      answerRu: "Сроки проекта зависят от объёма и сложности. Простой веб-сайт обычно занимает 2-4 недели, тогда как разработка веб-приложения может занять 2-4 месяца. Мобильные приложения обычно требуют 3-6 месяцев. На первичной консультации мы предоставим детальные сроки для вашего проекта.",
+      category: "Process",
+      sortOrder: 1,
+      isActive: true,
+    },
+    {
+      question: "How much does it cost to develop a website or app?",
+      answer: "Project costs depend on features, complexity, and timeline. We offer flexible pricing models including fixed-price projects and hourly rates. Contact us for a free consultation and detailed quote tailored to your specific needs and budget.",
+      questionRu: "Сколько стоит разработка сайта или приложения?",
+      answerRu: "Стоимость проекта зависит от функционала, сложности и сроков. Мы предлагаем гибкие модели ценообразования, включая фиксированную стоимость и почасовую оплату. Свяжитесь с нами для бесплатной консультации и детального расчёта под ваши потребности и бюджет.",
+      category: "Pricing",
+      sortOrder: 2,
+      isActive: true,
+    },
+    {
+      question: "What technologies do you use?",
+      answer: "We use modern, proven technologies: Frontend (React, Next.js, Vue.js, TypeScript), Backend (Node.js, Python, Go, Java), Mobile (React Native, Flutter, Swift, Kotlin), Databases (PostgreSQL, MongoDB, Redis), Cloud (AWS, Azure, Google Cloud), and DevOps tools (Docker, Kubernetes, CI/CD).",
+      questionRu: "Какие технологии вы используете?",
+      answerRu: "Мы используем современные, проверенные технологии: Frontend (React, Next.js, Vue.js, TypeScript), Backend (Node.js, Python, Go, Java), Мобильные (React Native, Flutter, Swift, Kotlin), Базы данных (PostgreSQL, MongoDB, Redis), Облако (AWS, Azure, Google Cloud) и DevOps инструменты (Docker, Kubernetes, CI/CD).",
+      category: "Technical",
+      sortOrder: 3,
+      isActive: true,
+    },
+    {
+      question: "Do you provide support after project launch?",
+      answer: "Yes! We offer ongoing maintenance and support packages including bug fixes, security updates, feature enhancements, performance monitoring, and 24/7 technical support. We also provide training for your team to manage the system independently if needed.",
+      questionRu: "Вы предоставляете поддержку после запуска проекта?",
+      answerRu: "Да! Мы предлагаем пакеты технической поддержки и обслуживания, включая исправление ошибок, обновления безопасности, доработку функционала, мониторинг производительности и круглосуточную техническую поддержку. Также проводим обучение вашей команды для самостоятельного управления системой.",
+      category: "Support",
+      sortOrder: 4,
+      isActive: true,
+    },
+    {
+      question: "How do we start working together?",
+      answer: "Getting started is easy: 1) Contact us via the form or email, 2) We schedule a free consultation to discuss your needs, 3) We provide a detailed proposal with timeline and cost, 4) Upon approval, we begin the discovery phase and project planning. The entire process from inquiry to project start typically takes 1-2 weeks.",
+      questionRu: "Как начать работу с вами?",
+      answerRu: "Начать просто: 1) Свяжитесь с нами через форму или email, 2) Мы назначим бесплатную консультацию для обсуждения ваших потребностей, 3) Мы предоставим детальное предложение со сроками и стоимостью, 4) После согласования начинаем этап анализа и планирования проекта. Весь процесс от запроса до старта проекта обычно занимает 1-2 недели.",
+      category: "Process",
+      sortOrder: 5,
+      isActive: true,
+    },
+    {
+      question: "Do you work with international clients?",
+      answer: "Yes, we work with clients worldwide. Our team is experienced in remote collaboration using modern tools (Slack, Jira, Figma, GitHub). We accommodate different time zones and provide clear communication throughout the project. We've successfully delivered projects for clients in Europe, Asia, and North America.",
+      questionRu: "Вы работаете с международными клиентами?",
+      answerRu: "Да, мы работаем с клиентами по всему миру. Наша команда имеет опыт удалённого сотрудничества с использованием современных инструментов (Slack, Jira, Figma, GitHub). Мы учитываем разницу во временных поясах и обеспечиваем чёткую коммуникацию на протяжении всего проекта. Мы успешно реализовали проекты для клиентов из Европы, Азии и Северной Америки.",
+      category: "General",
+      sortOrder: 6,
+      isActive: true,
+    },
+    {
+      question: "Can you help with an existing project?",
+      answer: "Absolutely! We regularly help clients improve, scale, or fix existing applications. We can conduct a code audit to assess the current state, recommend improvements, and take over development or work alongside your existing team. We also offer rescue services for troubled projects.",
+      questionRu: "Можете ли вы помочь с существующим проектом?",
+      answerRu: "Безусловно! Мы регулярно помогаем клиентам улучшать, масштабировать или исправлять существующие приложения. Мы можем провести аудит кода для оценки текущего состояния, предложить улучшения и взять на себя разработку или работать совместно с вашей командой. Также предлагаем услуги по спасению проблемных проектов.",
+      category: "Services",
+      sortOrder: 7,
+      isActive: true,
+    },
+    {
+      question: "What is your development process?",
+      answer: "We follow Agile methodology with 2-week sprints. Our process includes: Discovery & Planning, UI/UX Design, Development, Quality Assurance, Deployment, and Support. You'll have regular updates, access to project management tools, and demos at the end of each sprint to review progress and provide feedback.",
+      questionRu: "Каков ваш процесс разработки?",
+      answerRu: "Мы работаем по методологии Agile с двухнедельными спринтами. Наш процесс включает: Анализ и планирование, UI/UX дизайн, Разработку, Тестирование, Развёртывание и Поддержку. Вы будете получать регулярные обновления, иметь доступ к инструментам управления проектом и демонстрации в конце каждого спринта для обзора прогресса и обратной связи.",
+      category: "Process",
+      sortOrder: 8,
+      isActive: true,
+    },
+    {
+      question: "Do you sign NDA agreements?",
+      answer: "Yes, we take confidentiality seriously. We're happy to sign Non-Disclosure Agreements (NDA) before discussing any project details. All our contracts include standard confidentiality clauses to protect your intellectual property and business information.",
+      questionRu: "Вы подписываете соглашения о неразглашении?",
+      answerRu: "Да, мы серьёзно относимся к конфиденциальности. Мы готовы подписать соглашение о неразглашении (NDA) перед обсуждением деталей проекта. Все наши контракты включают стандартные положения о конфиденциальности для защиты вашей интеллектуальной собственности и бизнес-информации.",
+      category: "General",
+      sortOrder: 9,
+      isActive: true,
+    },
+  ];
+
+  // Clear existing FAQ items and seed fresh
+  const existingFaqs = await prisma.faqItem.count();
+  if (existingFaqs === 0) {
+    await prisma.faqItem.createMany({ data: faqItems });
+    console.log("FAQ items seeded:", faqItems.length);
+  } else {
+    console.log("FAQ items already exist, skipping seed:", existingFaqs);
+  }
+
   console.log("\nSeed completed successfully!");
   console.log(`Admin login: ${adminEmail} / ${adminPassword === "admin123" ? "admin123 (DEFAULT - CHANGE THIS!)" : "****"}`);
 }
