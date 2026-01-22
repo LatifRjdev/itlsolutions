@@ -44,3 +44,6 @@ next-env.d.ts
 
 # design files
 /design
+
+# admin scripts with credentials
+/scripts/update-admin.ts
