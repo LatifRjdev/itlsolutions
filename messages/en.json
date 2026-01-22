@@ -137,6 +137,21 @@
     "success": "Success",
     "back": "Back"
   },
+  "chat": {
+    "title": "Help Center",
+    "faqTitle": "Frequently Asked Questions",
+    "noAnswer": "Didn't find your answer?",
+    "contactUs": "Contact Us",
+    "name": "Your name",
+    "email": "Email",
+    "message": "Your question or message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you! We'll get back to you soon.",
+    "error": "Failed to send. Please try again.",
+    "backToFaq": "Back to FAQ",
+    "loading": "Loading..."
+  },
   "legal": {
     "lastUpdated": "Last Updated",
     "privacyTitle": "Privacy Policy",

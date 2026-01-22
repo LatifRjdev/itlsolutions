@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { Header, Footer } from "@/components/layout";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import { locales } from "@/i18n/config";
 
 export function generateStaticParams() {
@@ -26,6 +27,7 @@ export default async function LocaleLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <ChatWidget />
       </ThemeProvider>
     </NextIntlClientProvider>
   );

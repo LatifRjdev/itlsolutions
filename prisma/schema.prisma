@@ -138,3 +138,31 @@ model EmailSyncState {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
+
+// FAQ Chatbox Models
+model FaqItem {
+  id         String   @id @default(cuid())
+  question   String
+  answer     String   @db.Text
+  questionRu String?
+  answerRu   String?  @db.Text
+  category   String?
+  sortOrder  Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([isActive, sortOrder])
+}
+
+model ChatInquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String   @db.Text
+  locale    String   @default("en")
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([isRead, createdAt])
+}

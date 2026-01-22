@@ -14,6 +14,8 @@ import {
   LogOut,
   Home,
   Settings,
+  HelpCircle,
+  MessagesSquare,
 } from "lucide-react";
 
 const navItems = [
@@ -24,6 +26,8 @@ const navItems = [
   { href: "/admin/portfolio", label: "Portfolio", icon: FolderOpen },
   { href: "/admin/blog", label: "Blog", icon: FileText },
   { href: "/admin/contacts", label: "Contacts", icon: MessageSquare },
+  { href: "/admin/faq", label: "FAQ", icon: HelpCircle },
+  { href: "/admin/inquiries", label: "Chat Inquiries", icon: MessagesSquare },
 ];
 
 export function AdminSidebar() {

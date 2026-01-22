@@ -122,6 +122,57 @@ export async function sendContactConfirmation(params: ContactEmailParams) {
   }
 }
 
+interface ChatInquiryEmailParams {
+  name: string;
+  email: string;
+  message: string;
+  locale: string;
+}
+
+export async function sendChatInquiryNotification(params: ChatInquiryEmailParams) {
+  const { name, email, message, locale } = params;
+
+  const transporter = getTransporter();
+  if (!transporter) {
+    console.log("SMTP not configured, skipping chat inquiry notification");
+    return null;
+  }
+
+  try {
+    const info = await transporter.sendMail({
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      to: process.env.EMAIL_TO || "info@itlsolutions.net",
+      subject: `Chat Inquiry: ${name}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #137fec;">New Chat Inquiry</h2>
+
+          <div style="background: #f6f7f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+            <p><strong>Language:</strong> ${locale.toUpperCase()}</p>
+          </div>
+
+          <div style="padding: 20px; border-left: 4px solid #137fec; background: #f9fafb;">
+            <h3 style="margin-top: 0;">Message:</h3>
+            <p style="white-space: pre-wrap;">${message}</p>
+          </div>
+
+          <p style="color: #617589; font-size: 14px; margin-top: 30px;">
+            This inquiry was sent from the website chatbox.
+          </p>
+        </div>
+      `,
+    });
+
+    console.log("Chat inquiry notification sent:", info.messageId);
+    return info;
+  } catch (error) {
+    console.error("Failed to send chat inquiry notification:", error);
+    return null;
+  }
+}
+
 export async function sendEmail(params: SendEmailParams) {
   const transporter = getTransporter();
   if (!transporter) {
