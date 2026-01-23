@@ -21,11 +21,45 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Button, Container } from "@/components/ui";
 import { prisma } from "@/lib/prisma";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Comprehensive IT services including web development, mobile apps, cloud solutions, cybersecurity, and IT consulting.",
-};
+// SEO Metadata for Services Page
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const isRussian = locale === "ru";
+
+  return {
+    title: isRussian
+      ? "IT Услуги - Разработка сайтов и приложений в Душанбе | ITL Solutions"
+      : "IT Services - Web & App Development in Dushanbe | ITL Solutions",
+    description: isRussian
+      ? "Полный спектр IT услуг в Таджикистане: разработка сайтов, мобильные приложения, облачные решения, кибербезопасность и IT консалтинг в Душанбе."
+      : "Comprehensive IT services in Tajikistan: web development, mobile apps, cloud solutions, cybersecurity, and IT consulting in Dushanbe.",
+    keywords: isRussian
+      ? [
+          "разработка сайтов Душанбе",
+          "веб-разработка Таджикистан",
+          "мобильные приложения Душанбе",
+          "облачные решения Таджикистан",
+          "кибербезопасность Таджикистан",
+          "IT консалтинг Душанбе",
+        ]
+      : [
+          "web development Dushanbe",
+          "mobile apps Tajikistan",
+          "cloud solutions Dushanbe",
+          "cybersecurity Tajikistan",
+          "IT consulting Central Asia",
+        ],
+    openGraph: {
+      title: isRussian
+        ? "IT Услуги в Таджикистане | ITL Solutions"
+        : "IT Services in Tajikistan | ITL Solutions",
+      description: isRussian
+        ? "Разработка сайтов, мобильных приложений и IT решений в Душанбе"
+        : "Web development, mobile apps and IT solutions in Dushanbe",
+      locale: isRussian ? "ru_RU" : "en_US",
+    },
+  };
+}
 
 const iconMap: Record<string, LucideIcon> = {
   Cloud,

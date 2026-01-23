@@ -152,6 +152,32 @@
     "backToFaq": "Back to FAQ",
     "loading": "Loading..."
   },
+  "seo": {
+    "home": {
+      "title": "ITL Solutions - IT Company in Tajikistan | Web Development Dushanbe",
+      "description": "Leading IT company in Tajikistan. Web development, mobile apps, cloud solutions, and IT consulting in Dushanbe. 50+ successful projects."
+    },
+    "services": {
+      "title": "IT Services - Web & App Development Dushanbe | ITL Solutions",
+      "description": "Comprehensive IT services in Tajikistan: web development, mobile apps, cloud solutions, cybersecurity, and IT consulting in Dushanbe."
+    },
+    "portfolio": {
+      "title": "Portfolio - Our Projects in Tajikistan | ITL Solutions",
+      "description": "Explore our successful projects: GovTech solutions, e-commerce, mobile apps, and enterprise systems for clients in Tajikistan."
+    },
+    "about": {
+      "title": "About ITL Solutions - IT Company in Dushanbe",
+      "description": "Learn about ITL Solutions - IT company in Dushanbe. Our mission, team, and experience in software development in Tajikistan."
+    },
+    "contact": {
+      "title": "Contact ITL Solutions - IT Company Dushanbe, Tajikistan",
+      "description": "Contact ITL Solutions in Dushanbe. Free consultation for web development, mobile apps, and IT solutions in Tajikistan."
+    },
+    "blog": {
+      "title": "ITL Solutions Blog - IT News & Articles",
+      "description": "Read articles about web development, mobile apps, cloud technologies, and IT trends from ITL Solutions experts."
+    }
+  },
   "legal": {
     "lastUpdated": "Last Updated",
     "privacyTitle": "Privacy Policy",

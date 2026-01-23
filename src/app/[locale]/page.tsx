@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import {
   Users,
   HeadphonesIcon,
@@ -45,6 +46,48 @@ const iconMap: Record<string, LucideIcon> = {
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+// SEO Metadata for Home Page
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const isRussian = locale === "ru";
+
+  return {
+    title: isRussian
+      ? "ITL Solutions - IT компания в Таджикистане | Разработка сайтов и приложений Душанбе"
+      : "ITL Solutions - IT Company in Tajikistan | Web & App Development Dushanbe",
+    description: isRussian
+      ? "Ведущая IT компания в Таджикистане. Разработка сайтов, мобильных приложений, облачные решения и IT консалтинг в Душанбе. 50+ успешных проектов."
+      : "Leading IT company in Tajikistan. Web development, mobile apps, cloud solutions, and IT consulting in Dushanbe. 50+ successful projects.",
+    keywords: isRussian
+      ? [
+          "IT компания Таджикистан",
+          "IT компания Душанбе",
+          "разработка сайтов Душанбе",
+          "создание сайтов Таджикистан",
+          "веб-разработка Таджикистан",
+          "разработка мобильных приложений Душанбе",
+          "IT услуги Таджикистан",
+        ]
+      : [
+          "IT company Tajikistan",
+          "IT company Dushanbe",
+          "web development Tajikistan",
+          "software development Dushanbe",
+          "mobile app development Tajikistan",
+          "IT services Central Asia",
+        ],
+    openGraph: {
+      title: isRussian
+        ? "ITL Solutions - IT компания в Таджикистане"
+        : "ITL Solutions - IT Company in Tajikistan",
+      description: isRussian
+        ? "Разработка сайтов, мобильных приложений и IT решений в Душанбе"
+        : "Web development, mobile apps and IT solutions in Dushanbe",
+      locale: isRussian ? "ru_RU" : "en_US",
+    },
+  };
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
