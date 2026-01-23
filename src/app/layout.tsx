@@ -77,6 +77,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  // Verification meta tags for search engines
+  // Add your verification codes here after getting them from Google/Yandex
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || "",
+    yandex: process.env.YANDEX_VERIFICATION || "",
+  },
 };
 
 export default function RootLayout({
