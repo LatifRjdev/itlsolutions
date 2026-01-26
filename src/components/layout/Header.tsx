@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Menu, X, Hexagon } from "lucide-react";
-import { Button } from "@/components/ui";
-import { Container } from "@/components/ui";
+import { Menu, X } from "lucide-react";
+import { Button, Container, Logo } from "@/components/ui";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
@@ -27,12 +26,10 @@ export function Header() {
         <div className="py-3 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="size-8 text-[var(--primary)]">
-              <Hexagon className="w-8 h-8" />
-            </div>
-            <h2 className="text-lg font-bold leading-tight tracking-[-0.015em] text-[var(--foreground)]">
-              ITL Solutions
-            </h2>
+            <Logo className="w-10 h-10" />
+            <span className="text-lg font-bold leading-tight tracking-[-0.015em] text-[var(--foreground)]">
+              Solutions
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

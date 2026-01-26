@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="720" height="720">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a"/>
+      <stop offset="100%" style="stop-color:#1e40af"/>
+    </linearGradient>
+    <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="720" fill="url(#bgGrad)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="rgba(59,130,246,0.1)"/>
+  <circle cx="620" cy="620" r="200" fill="rgba(59,130,246,0.1)"/>
+
+  <!-- Main hexagon -->
+  <polygon
+    points="360,120 520,212 520,396 360,488 200,396 200,212"
+    fill="url(#hexGrad)"
+  />
+
+  <!-- Inner hexagon outline -->
+  <polygon
+    points="360,160 490,235 490,373 360,448 230,373 230,235"
+    fill="none"
+    stroke="rgba(255,255,255,0.25)"
+    stroke-width="3"
+  />
+
+  <!-- ITL text -->
+  <text
+    x="360"
+    y="330"
+    font-family="Inter, Arial, sans-serif"
+    font-size="100"
+    font-weight="800"
+    fill="white"
+    text-anchor="middle"
+  >ITL</text>
+
+  <!-- Company name below -->
+  <text
+    x="360"
+    y="580"
+    font-family="Inter, Arial, sans-serif"
+    font-size="48"
+    font-weight="600"
+    fill="white"
+    text-anchor="middle"
+  >Solutions</text>
+
+  <!-- Tagline -->
+  <text
+    x="360"
+    y="640"
+    font-family="Inter, Arial, sans-serif"
+    font-size="24"
+    font-weight="400"
+    fill="rgba(255,255,255,0.7)"
+    text-anchor="middle"
+  >IT Company • Tajikistan</text>
+</svg>
