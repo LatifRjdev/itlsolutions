@@ -276,16 +276,6 @@ async function main() {
       featured: true,
     },
     {
-      slug: "edocument-flow",
-      title: "Electronic Document Management",
-      category: "GovTech",
-      description: "Document approval and digital signature system for government agencies.",
-      content: "Comprehensive document management system with digital signatures (EDS), workflow routing between departments, deadline control, and notifications. Supports all document types with full audit trail.",
-      image: "https://images.unsplash.com/photo-1568702846914-96b305d2uj86?auto=format&fit=crop&w=800&q=80",
-      technologies: ["React", "Java", "PostgreSQL", "Elasticsearch"],
-      featured: false,
-    },
-    {
       slug: "citizens-portal",
       title: "Citizens Appeals Portal",
       category: "GovTech",
