@@ -2,17 +2,37 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { Target, Heart, Zap } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Button, Container } from "@/components/ui";
-
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about ITL Solutions - our mission, values, and the journey that made us a trusted technology partner.",
-};
+import { Button, Container, Breadcrumbs } from "@/components/ui";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const isRussian = locale === "ru";
+
+  return {
+    title: isRussian
+      ? "О компании ITL Solutions - IT компания в Душанбе"
+      : "About ITL Solutions - IT Company in Dushanbe",
+    description: isRussian
+      ? "ITL Solutions — ведущая IT компания в Таджикистане с 2015 года. Веб-разработка, мобильные приложения, облачные решения и IT консалтинг в Душанбе."
+      : "ITL Solutions is a leading IT company in Tajikistan since 2015. Web development, mobile apps, cloud solutions, and IT consulting in Dushanbe.",
+    keywords: isRussian
+      ? ["о компании ITL Solutions", "IT компания Душанбе", "IT компания Таджикистан", "разработчики Душанбе"]
+      : ["about ITL Solutions", "IT company Dushanbe", "IT company Tajikistan", "developers Dushanbe"],
+    openGraph: {
+      title: isRussian
+        ? "О компании ITL Solutions | Душанбе, Таджикистан"
+        : "About ITL Solutions | Dushanbe, Tajikistan",
+      description: isRussian
+        ? "Ведущая IT компания в Таджикистане с 2015 года"
+        : "Leading IT company in Tajikistan since 2015",
+      locale: isRussian ? "ru_RU" : "en_US",
+    },
+  };
+}
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
@@ -62,6 +82,16 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <section className="bg-[var(--background)]">
+        <Container size="lg">
+          <Breadcrumbs
+            locale={locale}
+            items={[{ label: t("title"), href: "/about" }]}
+          />
+        </Container>
+      </section>
+
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-b from-[var(--primary)]/10 to-transparent">
         <Container size="lg">

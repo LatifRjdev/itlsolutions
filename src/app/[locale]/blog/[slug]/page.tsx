@@ -31,9 +31,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Post Not Found" };
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://itlsolutions.net";
+
   return {
     title: post.title,
     description: post.excerpt,
+    keywords: [post.category, "ITL Solutions", "IT Tajikistan", post.title.split(" ").slice(0, 3).join(" ")],
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.publishedAt?.toISOString(),
+      authors: ["ITL Solutions"],
+      ...(post.image && { images: [{ url: post.image, width: 1200, height: 630, alt: post.title }] }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      ...(post.image && { images: [post.image] }),
+    },
+    alternates: {
+      canonical: `${siteUrl}/blog/${post.slug}`,
+    },
   };
 }
 

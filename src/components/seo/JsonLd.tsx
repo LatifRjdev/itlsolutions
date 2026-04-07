@@ -344,7 +344,7 @@ export function ITLSolutionsSchema({ locale }: { locale: string }) {
       ? "IT компания в Таджикистане: разработка сайтов, мобильных приложений, облачные решения, кибербезопасность и IT консалтинг"
       : "IT company in Tajikistan: web development, mobile apps, cloud solutions, cybersecurity and IT consulting",
     url: siteUrl,
-    image: `${siteUrl}/og-image.png`,
+    image: `${siteUrl}/opengraph-image`,
     address: {
       "@type": "PostalAddress",
       addressLocality: isRussian ? "Душанбе" : "Dushanbe",

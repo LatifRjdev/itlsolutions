@@ -18,7 +18,8 @@ import {
   LucideIcon,
 } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Button, Container } from "@/components/ui";
+import { Button, Container, Breadcrumbs } from "@/components/ui";
+import { FAQSchema } from "@/components/seo/FAQSchema";
 import { prisma } from "@/lib/prisma";
 
 // SEO Metadata for Services Page
@@ -86,13 +87,45 @@ export default async function ServicesPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations("services");
   const tCommon = await getTranslations("common");
+  const isRussian = locale === "ru";
 
   const services = await prisma.service.findMany({
     orderBy: { order: "asc" },
   });
 
+  const faqs = isRussian
+    ? [
+        { question: "Сколько стоит разработка сайта в Таджикистане?", answer: "Стоимость зависит от сложности проекта. Простой лендинг — от $500, корпоративный сайт — от $1500, интернет-магазин — от $3000. Свяжитесь с нами для точной оценки вашего проекта." },
+        { question: "Сколько времени занимает разработка сайта?", answer: "Лендинг — 1-2 недели, корпоративный сайт — 3-6 недель, сложное веб-приложение — 2-4 месяца. Сроки обсуждаются индивидуально." },
+        { question: "Какие технологии вы используете?", answer: "Мы используем React, Next.js, TypeScript для фронтенда, Node.js, PostgreSQL для бэкенда, React Native для мобильных приложений, AWS и Azure для облачных решений." },
+        { question: "Вы работаете только в Душанбе?", answer: "Наш офис находится в Душанбе, но мы работаем с клиентами по всему Таджикистану, СНГ и за рубежом. Возможна удалённая работа." },
+        { question: "Предоставляете ли вы поддержку после запуска?", answer: "Да, мы предоставляем техническую поддержку и обслуживание после запуска проекта. Доступны различные планы поддержки." },
+        { question: "Можете ли вы помочь с продвижением сайта?", answer: "Да, мы предлагаем SEO-оптимизацию, настройку аналитики и консультации по цифровому маркетингу для продвижения вашего бизнеса в интернете." },
+      ]
+    : [
+        { question: "How much does website development cost in Tajikistan?", answer: "Cost depends on project complexity. A simple landing page starts from $500, corporate website from $1500, e-commerce from $3000. Contact us for an accurate estimate for your project." },
+        { question: "How long does it take to develop a website?", answer: "A landing page takes 1-2 weeks, corporate website 3-6 weeks, complex web application 2-4 months. Timelines are discussed individually." },
+        { question: "What technologies do you use?", answer: "We use React, Next.js, TypeScript for frontend, Node.js, PostgreSQL for backend, React Native for mobile apps, AWS and Azure for cloud solutions." },
+        { question: "Do you only work in Dushanbe?", answer: "Our office is in Dushanbe, but we work with clients across Tajikistan, CIS countries, and internationally. Remote collaboration is available." },
+        { question: "Do you provide support after launch?", answer: "Yes, we provide technical support and maintenance after project launch. Various support plans are available." },
+        { question: "Can you help with website promotion?", answer: "Yes, we offer SEO optimization, analytics setup, and digital marketing consulting to promote your business online." },
+      ];
+
   return (
     <>
+      {/* FAQ Schema for SEO */}
+      <FAQSchema faqs={faqs} />
+
+      {/* Breadcrumbs */}
+      <section className="bg-[var(--background)]">
+        <Container size="lg">
+          <Breadcrumbs
+            locale={locale}
+            items={[{ label: t("title"), href: "/services" }]}
+          />
+        </Container>
+      </section>
+
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-b from-[var(--primary)]/10 to-transparent">
         <Container size="lg">
@@ -162,19 +195,52 @@ export default async function ServicesPage({ params }: Props) {
         </Container>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 bg-[var(--background)]">
+        <Container size="md">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-[var(--foreground)] mb-4">
+              {isRussian ? "Часто задаваемые вопросы" : "Frequently Asked Questions"}
+            </h2>
+            <p className="text-[var(--foreground-secondary)] max-w-2xl mx-auto">
+              {isRussian
+                ? "Ответы на популярные вопросы о наших IT-услугах"
+                : "Answers to common questions about our IT services"}
+            </p>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <details
+                key={index}
+                className="group rounded-xl bg-[var(--surface)] border border-[var(--border)] overflow-hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer p-5 text-[var(--foreground)] font-medium hover:bg-[var(--primary)]/5 transition-colors">
+                  <span>{faq.question}</span>
+                  <span className="ml-4 flex-shrink-0 text-[var(--primary)] group-open:rotate-45 transition-transform text-xl font-light">+</span>
+                </summary>
+                <div className="px-5 pb-5 text-[var(--foreground-secondary)] leading-relaxed">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-[var(--surface)]">
         <Container size="md">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-[var(--foreground)] mb-4">
-              Not sure which service you need?
+              {isRussian ? "Не уверены, какая услуга вам нужна?" : "Not sure which service you need?"}
             </h2>
             <p className="text-[var(--foreground-secondary)] mb-8 max-w-2xl mx-auto">
-              Our team of experts can help you identify the best solutions for
-              your business needs. Let&apos;s schedule a free consultation.
+              {isRussian
+                ? "Наша команда экспертов поможет подобрать лучшие решения для вашего бизнеса. Запишитесь на бесплатную консультацию."
+                : "Our team of experts can help you identify the best solutions for your business needs. Let's schedule a free consultation."}
             </p>
             <Button href="/contact" size="lg">
-              Schedule a Consultation
+              {isRussian ? "Записаться на консультацию" : "Schedule a Consultation"}
             </Button>
           </div>
         </Container>

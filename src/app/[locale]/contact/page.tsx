@@ -1,18 +1,36 @@
 import { Metadata } from "next";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Container } from "@/components/ui";
+import { Container, Breadcrumbs } from "@/components/ui";
 import { ContactForm } from "@/components/forms/ContactForm";
-
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description:
-    "Get in touch with ITL Solutions. We're here to help with your technology needs.",
-};
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const isRussian = locale === "ru";
+
+  return {
+    title: isRussian
+      ? "Контакты - Свяжитесь с нами | ITL Solutions"
+      : "Contact Us - Get in Touch | ITL Solutions",
+    description: isRussian
+      ? "Свяжитесь с ITL Solutions в Душанбе. Телефон: +992 557 777 509. Email: info@itlsolutions.net. Адрес: Айни 50/51, Душанбе, Таджикистан."
+      : "Contact ITL Solutions in Dushanbe. Phone: +992 557 777 509. Email: info@itlsolutions.net. Address: Ayni 50/51, Dushanbe, Tajikistan.",
+    keywords: isRussian
+      ? ["контакты ITL Solutions", "IT компания Душанбе контакты", "заказать сайт Душанбе"]
+      : ["contact ITL Solutions", "IT company Dushanbe contact", "order website Dushanbe"],
+    openGraph: {
+      title: isRussian ? "Контакты | ITL Solutions" : "Contact Us | ITL Solutions",
+      description: isRussian
+        ? "Свяжитесь с нами: +992 557 777 509, Душанбе"
+        : "Get in touch: +992 557 777 509, Dushanbe",
+      locale: isRussian ? "ru_RU" : "en_US",
+    },
+  };
+}
 
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
@@ -48,6 +66,16 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <section className="bg-[var(--background)]">
+        <Container size="lg">
+          <Breadcrumbs
+            locale={locale}
+            items={[{ label: t("title"), href: "/contact" }]}
+          />
+        </Container>
+      </section>
+
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-b from-[var(--primary)]/10 to-transparent">
         <Container size="lg">

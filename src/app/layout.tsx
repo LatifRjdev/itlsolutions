@@ -53,10 +53,10 @@ export const metadata: Metadata = {
       "We deliver cutting-edge IT solutions, from cloud infrastructure to custom software development.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "ITL Solutions",
+        alt: "ITL Solutions - IT Company in Tajikistan",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: "ITL Solutions - Transforming Business through Technology",
     description:
       "We deliver cutting-edge IT solutions, from cloud infrastructure to custom software development.",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
