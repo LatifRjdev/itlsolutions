@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITL Solutions — Single-Sided Business Cards (English)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e8e8; font-family: 'Inter', sans-serif; padding: 40px 20px; }
+  h1 { text-align: center; font-size: 28px; color: #1e3a8a; margin-bottom: 10px; }
+  .subtitle { text-align: center; color: #666; margin-bottom: 50px; font-size: 14px; }
+  .variant-label { text-align: center; font-size: 16px; font-weight: 700; color: #374151; margin: 40px 0 16px; text-transform: uppercase; letter-spacing: 2px; }
+  .card-wrapper { display: flex; justify-content: center; margin-bottom: 20px; }
+  .card { width: 90mm; height: 50mm; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: relative; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .card { box-shadow: none; page-break-inside: avoid; }
+    h1, .subtitle { display: none; }
+  }
+
+  /* ============================================
+     21 — Left Logo + Right Info
+     ============================================ */
+  .v21 {
+    background: white; display: flex; overflow: hidden;
+  }
+  .v21 .left {
+    width: 32%; background: linear-gradient(180deg, #1e3a8a 0%, #2563eb 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  }
+  .v21 .left .itl { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.8); letter-spacing: 2px; }
+  .v21 .right { flex: 1; padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between; }
+  .v21 .name { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #1e3a8a; }
+  .v21 .title { font-size: 8px; color: #3b82f6; text-transform: uppercase; letter-spacing: 1px; margin-top: 1px; }
+  .v21 .sep { height: 1px; background: #e5e7eb; margin: 4px 0; }
+  .v21 .contacts { display: flex; flex-direction: column; gap: 2.5px; }
+  .v21 .ci { font-size: 7.5px; color: #374151; }
+  .v21 .ci .ic { color: #2563eb; margin-right: 5px; font-size: 8px; }
+
+  /* ============================================
+     22 — Full Dark with Glow
+     ============================================ */
+  .v22 {
+    background: #0a0f1e; display: flex; padding: 16px 22px; color: white;
+    position: relative; overflow: hidden;
+  }
+  .v22 .glow { position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(59,130,246,0.12), transparent 70%); top: -60px; right: -40px; }
+  .v22 .left-col { flex: 1; display: flex; flex-direction: column; justify-content: space-between; z-index: 1; }
+  .v22 .right-col { width: 45%; display: flex; flex-direction: column; justify-content: space-between; z-index: 1; }
+  .v22 .logo-row { display: flex; align-items: center; gap: 8px; }
+  .v22 .logo-row .brand { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; }
+  .v22 .name { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; }
+  .v22 .title { font-size: 8px; color: #60a5fa; margin-top: 2px; }
+  .v22 .contacts { display: flex; flex-direction: column; gap: 2.5px; }
+  .v22 .ci { font-size: 7.5px; color: rgba(255,255,255,0.6); }
+  .v22 .ci .val { color: rgba(255,255,255,0.9); }
+  .v22 .web { font-family: 'Space Grotesk', sans-serif; font-size: 8px; color: #60a5fa; font-weight: 600; text-align: right; }
+
+  /* ============================================
+     23 — Centered Elegant
+     ============================================ */
+  .v23 {
+    background: white; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 14px 20px; border: 1px solid #e5e7eb;
+  }
+  .v23 .name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: #111827; }
+  .v23 .title { font-size: 8px; color: #9ca3af; text-transform: uppercase; letter-spacing: 3px; margin-top: 2px; }
+  .v23 .line { width: 40px; height: 2px; background: linear-gradient(90deg, #3b82f6, #1d4ed8); margin: 8px auto; border-radius: 1px; }
+  .v23 .info { font-size: 7.5px; color: #6b7280; line-height: 1.7; }
+  .v23 .info .sep { color: #3b82f6; margin: 0 5px; }
+  .v23 .brand { font-family: 'Playfair Display', serif; font-size: 10px; color: #1e3a8a; font-weight: 600; margin-top: 6px; letter-spacing: 2px; }
+
+  /* ============================================
+     24 — Top Bar Modern
+     ============================================ */
+  .v24 {
+    background: white; display: flex; flex-direction: column; position: relative; overflow: hidden;
+  }
+  .v24 .top-bar { height: 38%; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+  .v24 .top-left { color: white; }
+  .v24 .name { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; }
+  .v24 .title { font-size: 8px; color: rgba(255,255,255,0.7); margin-top: 1px; }
+  .v24 .top-logo { font-family: 'Sora', sans-serif; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 2px; }
+  .v24 .bottom { flex: 1; padding: 10px 20px; display: flex; align-items: center; }
+  .v24 .contacts { display: flex; flex-wrap: wrap; gap: 2px 16px; }
+  .v24 .ci { font-size: 7.5px; color: #374151; }
+  .v24 .ci .ic { color: #2563eb; margin-right: 4px; font-weight: 600; }
+
+  /* ============================================
+     25 — Boxed Grid
+     ============================================ */
+  .v25 {
+    background: #f9fafb; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; border: 1px solid #e5e7eb;
+  }
+  .v25 .cell { padding: 10px 14px; display: flex; flex-direction: column; justify-content: center; }
+  .v25 .cell-logo { background: #1e3a8a; align-items: center; text-align: center; color: white; }
+  .v25 .cell-logo .company { font-family: 'Archivo', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 2px; }
+  .v25 .cell-name { border-bottom: 1px solid #e5e7eb; }
+  .v25 .name { font-family: 'Archivo', sans-serif; font-size: 13px; font-weight: 700; color: #1e3a8a; }
+  .v25 .title { font-size: 8px; color: #6b7280; margin-top: 1px; }
+  .v25 .cell-contacts { grid-column: 1 / -1; padding: 8px 14px; }
+  .v25 .contacts { display: flex; flex-wrap: wrap; gap: 2px 14px; }
+  .v25 .ci { font-size: 7.5px; color: #374151; }
+  .v25 .ci .lbl { color: #1e3a8a; font-weight: 700; font-size: 7px; margin-right: 3px; }
+
+  /* ============================================
+     26 — Diagonal Split Dark/White
+     ============================================ */
+  .v26 {
+    background: white; position: relative; overflow: hidden;
+  }
+  .v26 .dark-half {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: #0f172a;
+    clip-path: polygon(0 0, 60% 0, 40% 100%, 0 100%);
+  }
+  .v26 .content { position: relative; z-index: 1; display: flex; height: 100%; }
+  .v26 .col-left { width: 42%; padding: 16px 18px; display: flex; flex-direction: column; justify-content: space-between; color: white; }
+  .v26 .logo-area { display: flex; align-items: center; gap: 6px; }
+  .v26 .brand { font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 700; }
+  .v26 .name { font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 700; }
+  .v26 .title { font-size: 8px; color: #93c5fd; }
+  .v26 .col-right { flex: 1; padding: 16px 18px; display: flex; flex-direction: column; justify-content: center; }
+  .v26 .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v26 .ci { font-size: 7.5px; color: #374151; }
+  .v26 .ci .ic { color: #2563eb; margin-right: 5px; }
+
+  /* ============================================
+     27 — Bottom Accent Bar
+     ============================================ */
+  .v27 {
+    background: white; display: flex; flex-direction: column; position: relative; overflow: hidden;
+  }
+  .v27 .main { flex: 1; padding: 14px 22px; display: flex; gap: 20px; align-items: center; }
+  .v27 .col-left { flex: 1; }
+  .v27 .col-right { flex: 1; }
+  .v27 .name { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; color: #111827; }
+  .v27 .title { font-size: 8px; color: #3b82f6; margin-top: 1px; text-transform: uppercase; letter-spacing: 1px; }
+  .v27 .brand { font-family: 'DM Sans', sans-serif; font-size: 9px; color: #9ca3af; margin-top: 6px; font-weight: 600; }
+  .v27 .contacts { display: flex; flex-direction: column; gap: 2.5px; }
+  .v27 .ci { font-size: 7.5px; color: #4b5563; }
+  .v27 .ci .dot { color: #3b82f6; margin-right: 4px; }
+  .v27 .bottom-bar { height: 10px; background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 40%, #60a5fa 100%); }
+
+  /* ============================================
+     28 — Circle Logo Center
+     ============================================ */
+  .v28 {
+    background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%); color: white;
+    display: flex; padding: 14px 20px; position: relative; overflow: hidden;
+  }
+  .v28 .circle-logo {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 70px; height: 70px; border-radius: 50%;
+    border: 1px solid rgba(96,165,250,0.2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .v28 .circle-logo .inner { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.08); }
+  .v28 .col-left { width: 38%; display: flex; flex-direction: column; justify-content: space-between; z-index: 1; }
+  .v28 .name { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; }
+  .v28 .title { font-size: 8px; color: #60a5fa; margin-top: 1px; }
+  .v28 .brand { font-family: 'Poppins', sans-serif; font-size: 9px; color: rgba(255,255,255,0.4); font-weight: 600; }
+  .v28 .col-right { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; z-index: 1; }
+  .v28 .contacts { display: flex; flex-direction: column; gap: 2.5px; text-align: right; }
+  .v28 .ci { font-size: 7.5px; color: rgba(255,255,255,0.6); }
+
+  /* ============================================
+     29 — Side Dots
+     ============================================ */
+  .v29 {
+    background: white; display: flex; position: relative; overflow: hidden;
+  }
+  .v29 .dots-bar {
+    width: 14px; background: #1e3a8a; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 8px; padding: 10px 0;
+  }
+  .v29 .dots-bar .dot { width: 4px; height: 4px; border-radius: 50%; background: #60a5fa; }
+  .v29 .content { flex: 1; padding: 14px 18px; display: flex; flex-direction: column; justify-content: space-between; }
+  .v29 .top-row { display: flex; justify-content: space-between; align-items: flex-start; }
+  .v29 .name { font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: 700; color: #1e3a8a; }
+  .v29 .title { font-size: 8px; color: #64748b; margin-top: 1px; }
+  .v29 .logo-text { font-family: 'Raleway', sans-serif; font-size: 10px; color: #dbeafe; font-weight: 700; letter-spacing: 1px; }
+  .v29 .contacts { display: flex; flex-direction: column; gap: 2.5px; }
+  .v29 .ci { font-size: 7.5px; color: #374151; }
+  .v29 .ci .ic { color: #3b82f6; margin-right: 5px; }
+
+  /* ============================================
+     30 — Monochrome Minimal
+     ============================================ */
+  .v30 {
+    background: #fafafa; display: flex; flex-direction: column; justify-content: space-between;
+    padding: 16px 22px; border: 1px solid #d1d5db;
+  }
+  .v30 .top-row { display: flex; justify-content: space-between; align-items: flex-start; }
+  .v30 .name { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 800; color: #111827; letter-spacing: 0.5px; }
+  .v30 .title { font-size: 8px; color: #6b7280; margin-top: 2px; text-transform: uppercase; letter-spacing: 2px; }
+  .v30 .logo { font-family: 'Inter', sans-serif; font-size: 9px; font-weight: 800; color: #d1d5db; letter-spacing: 2px; }
+  .v30 .line { height: 1px; background: #d1d5db; }
+  .v30 .bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .v30 .contacts { display: flex; flex-direction: column; gap: 2px; }
+  .v30 .ci { font-size: 7.5px; color: #6b7280; }
+  .v30 .web { font-family: 'Inter', sans-serif; font-size: 9px; color: #111827; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<h1>ITL Solutions — Single-Sided Cards</h1>
+<p class="subtitle">10 Single-Sided Variants &bull; English &bull; Print-ready (90&times;50mm)</p>
+
+<!-- 21 -->
+<div class="variant-label">21 — Left Logo + Right Info</div>
+<div class="card-wrapper">
+  <div class="card v21">
+    <div class="left">
+      <svg viewBox="0 0 50 46" width="40" height="36">
+        <defs><linearGradient id="h21" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#93c5fd"/></linearGradient></defs>
+        <polygon points="25,2 48,14 48,36 25,46 2,36 2,14" fill="url(#h21)"/>
+        <text x="25" y="29" font-family="Outfit,sans-serif" font-size="14" font-weight="800" fill="white" text-anchor="middle">ITL</text>
+      </svg>
+      <div class="itl">SOLUTIONS</div>
+    </div>
+    <div class="right">
+      <div>
+        <div class="name">Latif Rajabov</div>
+        <div class="title">Chief Executive Officer</div>
+      </div>
+      <div class="sep"></div>
+      <div class="contacts">
+        <div class="ci"><span class="ic">&#9742;</span>+992 557 777 509</div>
+        <div class="ci"><span class="ic">&#9993;</span>info@itlsolutions.net</div>
+        <div class="ci"><span class="ic">&#127760;</span>itlsolutions.net</div>
+        <div class="ci"><span class="ic">&#10148;</span>TG / WA: +992 557 777 509</div>
+        <div class="ci"><span class="ic">&#9873;</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 22 -->
+<div class="variant-label">22 — Full Dark with Glow</div>
+<div class="card-wrapper">
+  <div class="card v22">
+    <div class="glow"></div>
+    <div class="left-col">
+      <div class="logo-row">
+        <svg viewBox="0 0 24 22" width="18" height="16">
+          <polygon points="12,1 23,7 23,17 12,22 1,17 1,7" fill="#3b82f6"/>
+          <text x="12" y="15" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="700" fill="white" text-anchor="middle">ITL</text>
+        </svg>
+        <div class="brand">ITL Solutions</div>
+      </div>
+      <div>
+        <div class="name">Latif Rajabov</div>
+        <div class="title">Chief Executive Officer</div>
+      </div>
+    </div>
+    <div class="right-col">
+      <div class="contacts">
+        <div class="ci">&#9742; <span class="val">+992 557 777 509</span></div>
+        <div class="ci">&#9993; <span class="val">info@itlsolutions.net</span></div>
+        <div class="ci">&#10148; <span class="val">TG / WA: +992 557 777 509</span></div>
+        <div class="ci">&#9873; <span class="val">Ayni 50/51, Dushanbe</span></div>
+      </div>
+      <div class="web">itlsolutions.net</div>
+    </div>
+  </div>
+</div>
+
+<!-- 23 -->
+<div class="variant-label">23 — Centered Elegant</div>
+<div class="card-wrapper">
+  <div class="card v23">
+    <div class="name">Latif Rajabov</div>
+    <div class="title">Chief Executive Officer</div>
+    <div class="line"></div>
+    <div class="info">
+      +992 557 777 509<span class="sep">|</span>info@itlsolutions.net<br>
+      Telegram / WhatsApp: +992 557 777 509<br>
+      Ayni 50/51, Dushanbe, Tajikistan
+    </div>
+    <div class="brand">ITL SOLUTIONS</div>
+  </div>
+</div>
+
+<!-- 24 -->
+<div class="variant-label">24 — Top Bar Modern</div>
+<div class="card-wrapper">
+  <div class="card v24">
+    <div class="top-bar">
+      <div class="top-left">
+        <div class="name">Latif Rajabov</div>
+        <div class="title">Chief Executive Officer</div>
+      </div>
+      <div class="top-logo">ITL</div>
+    </div>
+    <div class="bottom">
+      <div class="contacts">
+        <div class="ci"><span class="ic">T</span>+992 557 777 509</div>
+        <div class="ci"><span class="ic">E</span>info@itlsolutions.net</div>
+        <div class="ci"><span class="ic">W</span>itlsolutions.net</div>
+        <div class="ci"><span class="ic">M</span>TG / WA: +992 557 777 509</div>
+        <div class="ci"><span class="ic">A</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 25 -->
+<div class="variant-label">25 — Boxed Grid</div>
+<div class="card-wrapper">
+  <div class="card v25">
+    <div class="cell cell-name">
+      <div class="name">Latif Rajabov</div>
+      <div class="title">CEO</div>
+    </div>
+    <div class="cell cell-logo">
+      <svg viewBox="0 0 40 36" width="28" height="24" style="margin-bottom:4px">
+        <polygon points="20,2 38,11 38,29 20,36 2,29 2,11" fill="rgba(255,255,255,0.25)"/>
+        <text x="20" y="23" font-family="Archivo,sans-serif" font-size="11" font-weight="800" fill="white" text-anchor="middle">ITL</text>
+      </svg>
+      <div class="company">SOLUTIONS</div>
+    </div>
+    <div class="cell cell-contacts">
+      <div class="contacts">
+        <div class="ci"><span class="lbl">TEL</span>+992 557 777 509</div>
+        <div class="ci"><span class="lbl">EMAIL</span>info@itlsolutions.net</div>
+        <div class="ci"><span class="lbl">WEB</span>itlsolutions.net</div>
+        <div class="ci"><span class="lbl">TG/WA</span>+992 557 777 509</div>
+        <div class="ci"><span class="lbl">ADDR</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 26 -->
+<div class="variant-label">26 — Diagonal Split</div>
+<div class="card-wrapper">
+  <div class="card v26">
+    <div class="dark-half"></div>
+    <div class="content">
+      <div class="col-left">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="16" height="14">
+            <polygon points="11,1 21,6 21,16 11,20 1,16 1,6" fill="#3b82f6"/>
+            <text x="11" y="14" font-family="Manrope,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text>
+          </svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Latif Rajabov</div>
+          <div class="title">CEO</div>
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="contacts">
+          <div class="ci"><span class="ic">&#9742;</span>+992 557 777 509</div>
+          <div class="ci"><span class="ic">&#9993;</span>info@itlsolutions.net</div>
+          <div class="ci"><span class="ic">&#127760;</span>itlsolutions.net</div>
+          <div class="ci"><span class="ic">&#10148;</span>TG/WA: +992 557 777 509</div>
+          <div class="ci"><span class="ic">&#9873;</span>Ayni 50/51, Dushanbe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 27 -->
+<div class="variant-label">27 — Bottom Accent Bar</div>
+<div class="card-wrapper">
+  <div class="card v27">
+    <div class="main">
+      <div class="col-left">
+        <div class="name">Latif Rajabov</div>
+        <div class="title">CEO</div>
+        <div class="brand">ITL Solutions</div>
+      </div>
+      <div class="col-right">
+        <div class="contacts">
+          <div class="ci"><span class="dot">&bull;</span>+992 557 777 509</div>
+          <div class="ci"><span class="dot">&bull;</span>info@itlsolutions.net</div>
+          <div class="ci"><span class="dot">&bull;</span>itlsolutions.net</div>
+          <div class="ci"><span class="dot">&bull;</span>TG / WA: +992 557 777 509</div>
+          <div class="ci"><span class="dot">&bull;</span>Ayni 50/51, Dushanbe</div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-bar"></div>
+  </div>
+</div>
+
+<!-- 28 -->
+<div class="variant-label">28 — Circle Logo Center</div>
+<div class="card-wrapper">
+  <div class="card v28">
+    <div class="circle-logo"><div class="inner">ITL</div></div>
+    <div class="col-left">
+      <div>
+        <div class="name">Latif Rajabov</div>
+        <div class="title">CEO</div>
+      </div>
+      <div class="brand">ITL Solutions</div>
+    </div>
+    <div class="col-right">
+      <div class="contacts">
+        <div class="ci">+992 557 777 509</div>
+        <div class="ci">info@itlsolutions.net</div>
+        <div class="ci">TG / WA: +992 557 777 509</div>
+        <div class="ci">Ayni 50/51, Dushanbe</div>
+      </div>
+      <div style="font-size:7.5px;color:#60a5fa;text-align:right;font-weight:600;">itlsolutions.net</div>
+    </div>
+  </div>
+</div>
+
+<!-- 29 -->
+<div class="variant-label">29 — Side Dots</div>
+<div class="card-wrapper">
+  <div class="card v29">
+    <div class="dots-bar">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="content">
+      <div class="top-row">
+        <div>
+          <div class="name">Latif Rajabov</div>
+          <div class="title">Chief Executive Officer</div>
+        </div>
+        <div class="logo-text">ITL SOLUTIONS</div>
+      </div>
+      <div class="contacts">
+        <div class="ci"><span class="ic">&#9742;</span>+992 557 777 509</div>
+        <div class="ci"><span class="ic">&#9993;</span>info@itlsolutions.net</div>
+        <div class="ci"><span class="ic">&#127760;</span>itlsolutions.net</div>
+        <div class="ci"><span class="ic">&#10148;</span>TG / WA: +992 557 777 509</div>
+        <div class="ci"><span class="ic">&#9873;</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 30 -->
+<div class="variant-label">30 — Monochrome Minimal</div>
+<div class="card-wrapper">
+  <div class="card v30">
+    <div class="top-row">
+      <div>
+        <div class="name">Latif Rajabov</div>
+        <div class="title">Chief Executive Officer</div>
+      </div>
+      <div class="logo">ITL SOLUTIONS</div>
+    </div>
+    <div class="line"></div>
+    <div class="bottom">
+      <div class="contacts">
+        <div class="ci">+992 557 777 509 &nbsp;&bull;&nbsp; info@itlsolutions.net</div>
+        <div class="ci">Telegram / WhatsApp: +992 557 777 509</div>
+        <div class="ci">Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+      <div class="web">itlsolutions.net</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

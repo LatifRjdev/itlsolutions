@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITL Solutions — D9 Цветовые вариации (Русский)</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e8e8; font-family: 'Raleway', sans-serif; padding: 40px 20px; }
+  h1 { text-align: center; font-size: 28px; color: #1e3a8a; margin-bottom: 10px; }
+  .subtitle { text-align: center; color: #666; margin-bottom: 50px; font-size: 14px; }
+  .variant-label { text-align: center; font-size: 15px; font-weight: 700; color: #374151; margin: 44px 0 16px; text-transform: uppercase; letter-spacing: 2px; }
+  .card-wrapper { display: flex; justify-content: center; margin-bottom: 20px; }
+  .card {
+    width: 90mm; height: 50mm; border-radius: 4px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: relative;
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  @media print {
+    body { background: white; padding: 0; }
+    .card { box-shadow: none; page-break-inside: avoid; }
+    h1, .subtitle { display: none; }
+  }
+
+  .icon { font-size: 8px; width: 14px; text-align: center; margin-right: 5px; flex-shrink: 0; }
+
+  .d9 { position: relative; overflow: hidden; display: flex; }
+  .d9 .light { position: absolute; inset: 0; clip-path: polygon(45% 0, 100% 0, 100% 100%, 65% 100%); }
+  .d9 .content { position: relative; z-index: 1; display: flex; height: 100%; width: 100%; }
+  .d9 .col-l { width: 48%; padding: 16px 20px; display: flex; flex-direction: column; justify-content: space-between; color: white; }
+  .d9 .logo-area { display: flex; align-items: center; gap: 7px; }
+  .d9 .brand { font-size: 11px; font-weight: 700; }
+  .d9 .name { font-size: 14px; font-weight: 700; }
+  .d9 .jobtitle { font-size: 8px; margin-top: 2px; }
+  .d9 .contacts { display: flex; flex-direction: column; gap: 3.5px; }
+  .d9 .ci { font-size: 7.5px; display: flex; align-items: center; font-variant-numeric: lining-nums; }
+  .d9 .col-r { flex: 1; padding: 16px 20px 16px 14px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; }
+  .d9 .web { font-size: 9px; font-weight: 700; font-variant-numeric: lining-nums; }
+
+  .c1 { background: #0f172a; }
+  .c1 .light { background: linear-gradient(170deg, #f0f9ff, #e0f2fe); }
+  .c1 .jobtitle { color: #60a5fa; }
+  .c1 .ci { color: rgba(255,255,255,0.6); }
+  .c1 .ci .icon { color: #60a5fa; }
+  .c1 .web { color: #1e3a8a; }
+  .c1 .hex { fill: #3b82f6; }
+
+  .c2 { background: #1c1917; }
+  .c2 .light { background: linear-gradient(170deg, #fafaf9, #f5f5f4); }
+  .c2 .jobtitle { color: #a8a29e; }
+  .c2 .ci { color: rgba(255,255,255,0.55); }
+  .c2 .ci .icon { color: #a8a29e; }
+  .c2 .web { color: #44403c; }
+  .c2 .hex { fill: #78716c; }
+
+  .c3 { background: #052e16; }
+  .c3 .light { background: linear-gradient(170deg, #f0fdf4, #dcfce7); }
+  .c3 .jobtitle { color: #4ade80; }
+  .c3 .ci { color: rgba(255,255,255,0.6); }
+  .c3 .ci .icon { color: #4ade80; }
+  .c3 .web { color: #166534; }
+  .c3 .hex { fill: #22c55e; }
+
+  .c4 { background: #2e1065; }
+  .c4 .light { background: linear-gradient(170deg, #faf5ff, #f3e8ff); }
+  .c4 .jobtitle { color: #a78bfa; }
+  .c4 .ci { color: rgba(255,255,255,0.6); }
+  .c4 .ci .icon { color: #a78bfa; }
+  .c4 .web { color: #581c87; }
+  .c4 .hex { fill: #8b5cf6; }
+
+  .c5 { background: #450a0a; }
+  .c5 .light { background: linear-gradient(170deg, #fff1f2, #ffe4e6); }
+  .c5 .jobtitle { color: #fca5a5; }
+  .c5 .ci { color: rgba(255,255,255,0.6); }
+  .c5 .ci .icon { color: #fca5a5; }
+  .c5 .web { color: #991b1b; }
+  .c5 .hex { fill: #ef4444; }
+
+  .c6 { background: #042f2e; }
+  .c6 .light { background: linear-gradient(170deg, #f0fdfa, #ccfbf1); }
+  .c6 .jobtitle { color: #5eead4; }
+  .c6 .ci { color: rgba(255,255,255,0.6); }
+  .c6 .ci .icon { color: #5eead4; }
+  .c6 .web { color: #115e59; }
+  .c6 .hex { fill: #14b8a6; }
+
+  .c7 { background: #0a0a0a; }
+  .c7 .light { background: linear-gradient(170deg, #fefce8, #fef9c3); }
+  .c7 .jobtitle { color: #fbbf24; }
+  .c7 .ci { color: rgba(255,255,255,0.55); }
+  .c7 .ci .icon { color: #fbbf24; }
+  .c7 .web { color: #92400e; }
+  .c7 .hex { fill: #f59e0b; }
+
+  .c8 { background: #0c4a6e; }
+  .c8 .light { background: linear-gradient(170deg, #f8fafc, #f1f5f9); }
+  .c8 .jobtitle { color: #7dd3fc; }
+  .c8 .ci { color: rgba(255,255,255,0.6); }
+  .c8 .ci .icon { color: #7dd3fc; }
+  .c8 .web { color: #0c4a6e; }
+  .c8 .hex { fill: #0ea5e9; }
+
+  .c9 { background: #1e1b4b; }
+  .c9 .light { background: linear-gradient(170deg, #eef2ff, #e0e7ff); }
+  .c9 .jobtitle { color: #818cf8; }
+  .c9 .ci { color: rgba(255,255,255,0.6); }
+  .c9 .ci .icon { color: #818cf8; }
+  .c9 .web { color: #3730a3; }
+  .c9 .hex { fill: #6366f1; }
+
+  .c10 { background: #18181b; }
+  .c10 .light { background: linear-gradient(170deg, #fff1f2, #fce7f3); }
+  .c10 .jobtitle { color: #f9a8d4; }
+  .c10 .ci { color: rgba(255,255,255,0.55); }
+  .c10 .ci .icon { color: #f9a8d4; }
+  .c10 .web { color: #9d174d; }
+  .c10 .hex { fill: #ec4899; }
+</style>
+</head>
+<body>
+
+<h1>ITL Solutions — Цветовые вариации D9</h1>
+<p class="subtitle">10 цветовых комбинаций &bull; Русский язык &bull; Для печати (90&times;50мм)</p>
+
+<!-- C1 -->
+<div class="variant-label">C1 — Тёмно-синий + Ледяной</div>
+<div class="card-wrapper">
+  <div class="card d9 c1">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C2 -->
+<div class="variant-label">C2 — Уголь + Тёплый белый</div>
+<div class="card-wrapper">
+  <div class="card d9 c2">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C3 -->
+<div class="variant-label">C3 — Изумрудный + Мята</div>
+<div class="card-wrapper">
+  <div class="card d9 c3">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C4 -->
+<div class="variant-label">C4 — Королевский фиолетовый + Лаванда</div>
+<div class="card-wrapper">
+  <div class="card d9 c4">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C5 -->
+<div class="variant-label">C5 — Бордо + Румянец</div>
+<div class="card-wrapper">
+  <div class="card d9 c5">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C6 -->
+<div class="variant-label">C6 — Тёмный бирюзовый + Аква</div>
+<div class="card-wrapper">
+  <div class="card d9 c6">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C7 -->
+<div class="variant-label">C7 — Чёрный + Золото</div>
+<div class="card-wrapper">
+  <div class="card d9 c7">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C8 -->
+<div class="variant-label">C8 — Стальной синий + Серебро</div>
+<div class="card-wrapper">
+  <div class="card d9 c8">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C9 -->
+<div class="variant-label">C9 — Глубокий индиго + Мягкий синий</div>
+<div class="card-wrapper">
+  <div class="card d9 c9">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- C10 -->
+<div class="variant-label">C10 — Графит + Розовое золото</div>
+<div class="card-wrapper">
+  <div class="card d9 c10">
+    <div class="light"></div>
+    <div class="content">
+      <div class="col-l">
+        <div class="logo-area">
+          <svg viewBox="0 0 22 20" width="18" height="16"><polygon class="hex" points="11,1 21,6 21,16 11,20 1,16 1,6"/><text x="11" y="14" font-family="Raleway,sans-serif" font-size="6" font-weight="700" fill="white" text-anchor="middle">ITL</text></svg>
+          <div class="brand">Solutions</div>
+        </div>
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="jobtitle">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="ci"><i class="fa-solid fa-phone icon"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-envelope icon"></i>info@itlsolutions.net</div>
+          <div class="ci"><i class="fa-brands fa-telegram icon"></i><i class="fa-brands fa-whatsapp icon" style="margin-left:-4px"></i>+992 557 777 509</div>
+          <div class="ci"><i class="fa-solid fa-location-dot icon"></i>Айни 50/51, Душанбе</div>
+        </div>
+      </div>
+      <div class="col-r"><div class="web">itlsolutions.net</div></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

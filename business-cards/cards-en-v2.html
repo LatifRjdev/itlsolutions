@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITL Solutions — Business Cards v2 (English)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&family=Archivo:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e8e8; font-family: 'Inter', sans-serif; padding: 40px 20px; }
+  h1 { text-align: center; font-size: 28px; color: #1e3a8a; margin-bottom: 10px; }
+  .subtitle { text-align: center; color: #666; margin-bottom: 50px; font-size: 14px; }
+  .variant-label { text-align: center; font-size: 18px; font-weight: 700; color: #374151; margin: 50px 0 20px; text-transform: uppercase; letter-spacing: 2px; }
+  .card-pair { display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; flex-wrap: wrap; }
+  .card-side-label { text-align: center; font-size: 11px; color: #999; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .card { width: 90mm; height: 50mm; border-radius: 4px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: relative; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .card { box-shadow: none; page-break-inside: avoid; }
+    .variant-label { page-break-before: always; }
+    .variant-label:first-of-type { page-break-before: auto; }
+    h1, .subtitle { display: none; }
+  }
+
+  /* ============================================
+     VARIANT 11 — Glass Morphism
+     ============================================ */
+  .v11-front {
+    background: linear-gradient(135deg, #0c1445 0%, #1a237e 40%, #0d47a1 100%);
+    display: flex; align-items: center; justify-content: center; flex-direction: column; color: white;
+    position: relative; overflow: hidden;
+  }
+  .v11-front .blob1 { position: absolute; width: 120px; height: 120px; background: rgba(96,165,250,0.3); border-radius: 50%; top: -30px; right: -20px; filter: blur(30px); }
+  .v11-front .blob2 { position: absolute; width: 100px; height: 100px; background: rgba(37,99,235,0.3); border-radius: 50%; bottom: -20px; left: -10px; filter: blur(25px); }
+  .v11-front .glass-box {
+    background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 16px 28px; text-align: center; z-index: 1;
+  }
+  .v11-front .company { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+  .v11-front .tagline { font-size: 7px; color: rgba(255,255,255,0.6); letter-spacing: 3px; margin-top: 4px; text-transform: uppercase; }
+
+  .v11-back {
+    background: linear-gradient(135deg, #0c1445 0%, #1a237e 40%, #0d47a1 100%);
+    color: white; padding: 18px 22px; display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .v11-back .blob { position: absolute; width: 80px; height: 80px; background: rgba(96,165,250,0.15); border-radius: 50%; top: -20px; right: -10px; filter: blur(20px); }
+  .v11-back .content { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+  .v11-back .name { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; }
+  .v11-back .title { font-size: 9px; color: #93c5fd; margin-top: 2px; }
+  .v11-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v11-back .contact-item { font-size: 8px; color: rgba(255,255,255,0.7); }
+  .v11-back .contact-item .lbl { color: #93c5fd; font-size: 7px; margin-right: 5px; font-weight: 600; }
+
+  /* ============================================
+     VARIANT 12 — Diagonal Cut
+     ============================================ */
+  .v12-front {
+    background: white; display: flex; align-items: center; position: relative; overflow: hidden;
+  }
+  .v12-front .diag {
+    position: absolute; top: 0; left: 0; width: 55%; height: 100%;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+  }
+  .v12-front .left-content { position: relative; z-index: 1; padding: 0 24px; color: white; }
+  .v12-front .hex-sm { margin-bottom: 6px; }
+  .v12-front .company-name { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; }
+  .v12-front .right-content { position: absolute; right: 20px; text-align: right; }
+  .v12-front .big-itl { font-family: 'Outfit', sans-serif; font-size: 42px; font-weight: 800; color: #e0e7ff; letter-spacing: 3px; }
+
+  .v12-back {
+    background: white; padding: 16px 22px; display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .v12-back .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #1e3a8a, #3b82f6); }
+  .v12-back .name { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #1e3a8a; margin-top: 4px; }
+  .v12-back .title { font-size: 9px; color: #6b7280; }
+  .v12-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v12-back .contact-item { font-size: 8px; color: #374151; }
+  .v12-back .contact-item .ic { color: #2563eb; margin-right: 6px; font-weight: 700; }
+  .v12-back .brand-footer { display: flex; justify-content: flex-end; align-items: center; gap: 5px; }
+  .v12-back .brand-footer span { font-family: 'Outfit', sans-serif; font-size: 9px; color: #9ca3af; font-weight: 600; }
+
+  /* ============================================
+     VARIANT 13 — Neon Accent
+     ============================================ */
+  .v13-front {
+    background: #030712; display: flex; align-items: center; justify-content: center; flex-direction: column;
+    color: white; position: relative; overflow: hidden;
+  }
+  .v13-front .neon-line1 { position: absolute; top: 15px; left: 20px; right: 20px; height: 1px; background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+  .v13-front .neon-line2 { position: absolute; bottom: 15px; left: 20px; right: 20px; height: 1px; background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+  .v13-front .company { font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: 5px; text-shadow: 0 0 20px rgba(59,130,246,0.5); }
+  .v13-front .tagline { font-size: 7px; color: #60a5fa; letter-spacing: 5px; margin-top: 6px; text-transform: uppercase; }
+
+  .v13-back {
+    background: #030712; color: white; padding: 18px 22px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+  }
+  .v13-back .left-accent { position: absolute; left: 0; top: 20%; bottom: 20%; width: 3px; background: #3b82f6; box-shadow: 0 0 10px rgba(59,130,246,0.5); }
+  .v13-back .content { margin-left: 12px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+  .v13-back .name { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600; }
+  .v13-back .title { font-size: 9px; color: #60a5fa; margin-top: 1px; }
+  .v13-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v13-back .contact-item { font-size: 8px; color: rgba(255,255,255,0.5); }
+  .v13-back .contact-item .val { color: rgba(255,255,255,0.85); }
+
+  /* ============================================
+     VARIANT 14 — Horizontal Stripes
+     ============================================ */
+  .v14-front {
+    background: white; display: flex; align-items: center; justify-content: center; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .v14-front .stripe1 { position: absolute; top: 0; left: 0; right: 0; height: 8px; background: #1e3a8a; }
+  .v14-front .stripe2 { position: absolute; top: 8px; left: 0; right: 0; height: 4px; background: #3b82f6; }
+  .v14-front .stripe3 { position: absolute; bottom: 0; left: 0; right: 0; height: 8px; background: #1e3a8a; }
+  .v14-front .stripe4 { position: absolute; bottom: 8px; left: 0; right: 0; height: 4px; background: #3b82f6; }
+  .v14-front .center { z-index: 1; text-align: center; }
+  .v14-front .company { font-family: 'Archivo', sans-serif; font-size: 20px; font-weight: 800; color: #1e3a8a; letter-spacing: 2px; }
+  .v14-front .sub { font-size: 8px; color: #6b7280; margin-top: 3px; letter-spacing: 3px; text-transform: uppercase; }
+
+  .v14-back {
+    background: white; padding: 18px 22px; display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .v14-back .stripe-top { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #1e3a8a, #3b82f6); }
+  .v14-back .header { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 4px; }
+  .v14-back .name { font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 800; color: #1e3a8a; }
+  .v14-back .title { font-size: 9px; color: #3b82f6; font-weight: 500; }
+  .v14-back .brand-mark { font-family: 'Archivo', sans-serif; font-size: 10px; font-weight: 900; color: #dbeafe; letter-spacing: 1px; }
+  .v14-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v14-back .contact-item { font-size: 8px; color: #374151; display: flex; gap: 6px; }
+  .v14-back .contact-item .label { color: #1e3a8a; font-weight: 700; min-width: 30px; font-size: 7px; text-transform: uppercase; }
+
+  /* ============================================
+     VARIANT 15 — Rounded Modern
+     ============================================ */
+  .v15-front {
+    background: linear-gradient(160deg, #eff6ff 0%, #dbeafe 100%);
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    position: relative;
+  }
+  .v15-front .circle-bg {
+    position: absolute; width: 180px; height: 180px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(30,58,138,0.05));
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+  .v15-front .logo-group { z-index: 1; text-align: center; }
+  .v15-front .hex-wrap { margin-bottom: 8px; }
+  .v15-front .company { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; color: #1e3a8a; }
+  .v15-front .tagline { font-family: 'DM Sans', sans-serif; font-size: 8px; color: #6b7280; margin-top: 3px; letter-spacing: 2px; }
+
+  .v15-back {
+    background: linear-gradient(160deg, #eff6ff 0%, #dbeafe 100%);
+    padding: 18px 22px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .v15-back .info-box {
+    background: white; border-radius: 10px; padding: 12px 16px;
+    box-shadow: 0 2px 8px rgba(30,58,138,0.08);
+  }
+  .v15-back .name { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: #1e3a8a; }
+  .v15-back .title { font-size: 9px; color: #6b7280; margin-top: 1px; margin-bottom: 8px; }
+  .v15-back .contacts { display: flex; flex-direction: column; gap: 2px; }
+  .v15-back .contact-item { font-family: 'DM Sans', sans-serif; font-size: 7.5px; color: #374151; }
+  .v15-back .contact-item .ic { color: #3b82f6; margin-right: 5px; }
+  .v15-back .brand-sm { text-align: right; font-family: 'DM Sans', sans-serif; font-size: 8px; color: #93a3b8; font-weight: 600; margin-top: 4px; }
+
+  /* ============================================
+     VARIANT 16 — Vertical Name
+     ============================================ */
+  .v16-front {
+    background: #1e3a8a; display: flex; position: relative; overflow: hidden; color: white;
+  }
+  .v16-front .vert-text {
+    writing-mode: vertical-rl; text-orientation: mixed;
+    font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700;
+    color: rgba(255,255,255,0.06); position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  }
+  .v16-front .main-content {
+    display: flex; flex-direction: column; justify-content: center; padding: 0 24px; z-index: 1;
+  }
+  .v16-front .company { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; }
+  .v16-front .dot-line { display: flex; gap: 4px; margin: 8px 0; }
+  .v16-front .dot-line span { width: 4px; height: 4px; border-radius: 50%; background: #60a5fa; }
+  .v16-front .tagline { font-size: 8px; color: rgba(255,255,255,0.6); letter-spacing: 2px; }
+
+  .v16-back {
+    background: white; display: flex; overflow: hidden;
+  }
+  .v16-back .side-brand {
+    width: 40px; background: #1e3a8a; display: flex; align-items: center; justify-content: center;
+    writing-mode: vertical-rl; color: rgba(255,255,255,0.4); font-size: 8px; letter-spacing: 3px;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+  }
+  .v16-back .content { flex: 1; padding: 16px 18px; display: flex; flex-direction: column; justify-content: space-between; }
+  .v16-back .name { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #1e3a8a; }
+  .v16-back .title { font-size: 9px; color: #6b7280; }
+  .v16-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v16-back .contact-item { font-size: 8px; color: #374151; }
+  .v16-back .contact-item .ic { color: #2563eb; margin-right: 5px; font-weight: 700; }
+
+  /* ============================================
+     VARIANT 17 — Outline Hex Frame
+     ============================================ */
+  .v17-front {
+    background: white; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; border: 2px solid #1e3a8a;
+  }
+  .v17-front .hex-frame { position: relative; text-align: center; }
+  .v17-front .company { font-family: 'Manrope', sans-serif; font-size: 20px; font-weight: 800; color: #1e3a8a; letter-spacing: 2px; }
+  .v17-front .sub-line { font-family: 'Manrope', sans-serif; font-size: 8px; color: #3b82f6; margin-top: 2px; letter-spacing: 3px; text-transform: uppercase; }
+  .v17-front .corner-tl { position: absolute; top: 8px; left: 8px; width: 20px; height: 20px; border-top: 2px solid #3b82f6; border-left: 2px solid #3b82f6; }
+  .v17-front .corner-br { position: absolute; bottom: 8px; right: 8px; width: 20px; height: 20px; border-bottom: 2px solid #3b82f6; border-right: 2px solid #3b82f6; }
+
+  .v17-back {
+    background: white; border: 2px solid #1e3a8a; padding: 16px 20px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .v17-back .header { border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; }
+  .v17-back .name { font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 800; color: #1e3a8a; }
+  .v17-back .title { font-size: 9px; color: #3b82f6; margin-top: 1px; }
+  .v17-back .contacts { display: flex; flex-wrap: wrap; gap: 2px 14px; }
+  .v17-back .contact-item { font-size: 7.5px; color: #374151; }
+  .v17-back .contact-item .lbl { font-family: 'Manrope', sans-serif; color: #1e3a8a; font-weight: 700; margin-right: 4px; font-size: 7px; }
+  .v17-back .web { text-align: right; font-family: 'Manrope', sans-serif; font-size: 9px; color: #1e3a8a; font-weight: 700; }
+
+  /* ============================================
+     VARIANT 18 — Gradient Card Edge
+     ============================================ */
+  .v18-front {
+    background: white; display: flex; align-items: center; justify-content: center; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .v18-front .edge-left { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, #3b82f6, #1e3a8a, #60a5fa); }
+  .v18-front .edge-right { position: absolute; right: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, #60a5fa, #1e3a8a, #3b82f6); }
+  .v18-front .company { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; color: #111827; letter-spacing: 1px; }
+  .v18-front .divider { width: 30px; height: 3px; background: linear-gradient(90deg, #3b82f6, #1e3a8a); margin: 6px 0; border-radius: 2px; }
+  .v18-front .tagline { font-size: 8px; color: #9ca3af; letter-spacing: 3px; text-transform: uppercase; }
+
+  .v18-back {
+    background: white; padding: 16px 22px; display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .v18-back .edge-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #3b82f6, #1e3a8a, #60a5fa); }
+  .v18-back .row { display: flex; justify-content: space-between; align-items: flex-start; }
+  .v18-back .name { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #111827; }
+  .v18-back .title { font-size: 9px; color: #3b82f6; margin-top: 1px; }
+  .v18-back .logo-text { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 800; color: #dbeafe; }
+  .v18-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v18-back .contact-item { font-size: 8px; color: #4b5563; }
+  .v18-back .contact-item .sep { color: #3b82f6; margin: 0 4px; }
+
+  /* ============================================
+     VARIANT 19 — Asymmetric Block
+     ============================================ */
+  .v19-front {
+    background: #f8fafc; display: flex; overflow: hidden;
+  }
+  .v19-front .block-left {
+    width: 28%; background: #1e3a8a; display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .v19-front .block-left::after {
+    content: ''; position: absolute; right: -15px; top: 0; bottom: 0; width: 30px;
+    background: #1e3a8a; clip-path: polygon(0 0, 0 100%, 100% 50%);
+  }
+  .v19-front .block-right {
+    flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 0 0 30px;
+  }
+  .v19-front .company { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700; color: #1e3a8a; }
+  .v19-front .tagline { font-size: 7px; color: #94a3b8; letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+
+  .v19-back {
+    background: #f8fafc; padding: 16px 22px; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .v19-back .top { display: flex; gap: 12px; align-items: center; }
+  .v19-back .blue-block { width: 4px; height: 32px; background: #1e3a8a; border-radius: 2px; }
+  .v19-back .info {}
+  .v19-back .name { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: #1e3a8a; }
+  .v19-back .title { font-size: 9px; color: #64748b; }
+  .v19-back .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 12px; }
+  .v19-back .contact-item { font-size: 7.5px; color: #475569; }
+  .v19-back .contact-item .ic { color: #2563eb; margin-right: 4px; }
+  .v19-back .full-width { grid-column: 1 / -1; }
+
+  /* ============================================
+     VARIANT 20 — Dot Matrix
+     ============================================ */
+  .v20-front {
+    background: #0f172a; display: flex; align-items: center; justify-content: center; flex-direction: column;
+    color: white; position: relative; overflow: hidden;
+  }
+  .v20-front .dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(59,130,246,0.15) 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+  .v20-front .center { z-index: 1; text-align: center; }
+  .v20-front .itl-big { font-family: 'Archivo', sans-serif; font-size: 40px; font-weight: 900; letter-spacing: 8px; color: white; }
+  .v20-front .solutions { font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 8px; color: #60a5fa; margin-top: 2px; }
+
+  .v20-back {
+    background: #0f172a; color: white; padding: 18px 22px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .v20-back .dots {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(59,130,246,0.07) 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+  .v20-back .content { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+  .v20-back .name { font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 700; }
+  .v20-back .title { font-size: 9px; color: #60a5fa; margin-top: 1px; font-weight: 400; }
+  .v20-back .divider { height: 1px; background: rgba(96,165,250,0.2); margin: 6px 0; }
+  .v20-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v20-back .contact-item { font-size: 8px; color: rgba(255,255,255,0.5); }
+  .v20-back .contact-item .val { color: rgba(255,255,255,0.85); }
+  .v20-back .web { text-align: right; font-family: 'Archivo', sans-serif; font-size: 8px; color: #60a5fa; font-weight: 600; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<h1>ITL Solutions — Business Cards (Set 2)</h1>
+<p class="subtitle">10 New Design Variants &bull; English &bull; Print-ready (90&times;50mm)</p>
+
+<!-- VARIANT 11 -->
+<div class="variant-label">Variant 11 — Glass Morphism</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v11-front">
+      <div class="blob1"></div>
+      <div class="blob2"></div>
+      <div class="glass-box">
+        <div class="company">ITL SOLUTIONS</div>
+        <div class="tagline">Technology &bull; Innovation &bull; Excellence</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v11-back">
+      <div class="blob"></div>
+      <div class="content">
+        <div>
+          <div class="name">Latif Rajabov</div>
+          <div class="title">Chief Executive Officer</div>
+        </div>
+        <div class="contacts">
+          <div class="contact-item"><span class="lbl">TEL</span>+992 557 777 509</div>
+          <div class="contact-item"><span class="lbl">EMAIL</span>info@itlsolutions.net</div>
+          <div class="contact-item"><span class="lbl">WEB</span>itlsolutions.net</div>
+          <div class="contact-item"><span class="lbl">TG/WA</span>+992 557 777 509</div>
+          <div class="contact-item"><span class="lbl">ADDR</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 12 -->
+<div class="variant-label">Variant 12 — Diagonal Cut</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v12-front">
+      <div class="diag"></div>
+      <div class="left-content">
+        <div class="hex-sm">
+          <svg viewBox="0 0 30 28" width="26" height="24">
+            <polygon points="15,1 29,8 29,22 15,28 1,22 1,8" fill="rgba(255,255,255,0.2)"/>
+            <text x="15" y="18" font-family="Outfit,sans-serif" font-size="8" font-weight="800" fill="white" text-anchor="middle">ITL</text>
+          </svg>
+        </div>
+        <div class="company-name">ITL SOLUTIONS</div>
+      </div>
+      <div class="right-content">
+        <div class="big-itl">ITL</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v12-back">
+      <div class="top-bar"></div>
+      <div>
+        <div class="name">Latif Rajabov</div>
+        <div class="title">Chief Executive Officer</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span class="ic">&#9742;</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="ic">&#9993;</span>info@itlsolutions.net</div>
+        <div class="contact-item"><span class="ic">&#127760;</span>itlsolutions.net</div>
+        <div class="contact-item"><span class="ic">&#10148;</span>TG / WA: +992 557 777 509</div>
+        <div class="contact-item"><span class="ic">&#9873;</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+      <div class="brand-footer">
+        <svg viewBox="0 0 20 18" width="14" height="12"><polygon points="10,1 19,6 19,14 10,18 1,14 1,6" fill="#dbeafe"/></svg>
+        <span>ITL Solutions</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 13 -->
+<div class="variant-label">Variant 13 — Neon Accent</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v13-front">
+      <div class="neon-line1"></div>
+      <div class="neon-line2"></div>
+      <div class="company">ITL</div>
+      <div class="tagline">Solutions</div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v13-back">
+      <div class="left-accent"></div>
+      <div class="content">
+        <div>
+          <div class="name">Latif Rajabov</div>
+          <div class="title">Chief Executive Officer</div>
+        </div>
+        <div class="contacts">
+          <div class="contact-item">&#9742; <span class="val">+992 557 777 509</span></div>
+          <div class="contact-item">&#9993; <span class="val">info@itlsolutions.net</span></div>
+          <div class="contact-item">&#127760; <span class="val">itlsolutions.net</span></div>
+          <div class="contact-item">&#10148; <span class="val">TG / WA: +992 557 777 509</span></div>
+          <div class="contact-item">&#9873; <span class="val">Ayni 50/51, Dushanbe</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 14 -->
+<div class="variant-label">Variant 14 — Horizontal Stripes</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v14-front">
+      <div class="stripe1"></div><div class="stripe2"></div>
+      <div class="stripe3"></div><div class="stripe4"></div>
+      <div class="center">
+        <div class="company">ITL SOLUTIONS</div>
+        <div class="sub">Information Technology</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v14-back">
+      <div class="stripe-top"></div>
+      <div class="header">
+        <div>
+          <div class="name">Latif Rajabov</div>
+          <div class="title">Chief Executive Officer</div>
+        </div>
+        <div class="brand-mark">ITL</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span class="label">PHONE</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="label">EMAIL</span>info@itlsolutions.net</div>
+        <div class="contact-item"><span class="label">WEB</span>itlsolutions.net</div>
+        <div class="contact-item"><span class="label">TG/WA</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="label">ADDR</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 15 -->
+<div class="variant-label">Variant 15 — Rounded Modern</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v15-front">
+      <div class="circle-bg"></div>
+      <div class="logo-group">
+        <div class="hex-wrap">
+          <svg viewBox="0 0 50 46" width="42" height="38">
+            <defs><linearGradient id="hg15" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient></defs>
+            <polygon points="25,2 48,14 48,36 25,46 2,36 2,14" fill="url(#hg15)"/>
+            <text x="25" y="29" font-family="DM Sans,sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">ITL</text>
+          </svg>
+        </div>
+        <div class="company">ITL Solutions</div>
+        <div class="tagline">Your Technology Partner</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v15-back">
+      <div class="info-box">
+        <div class="name">Latif Rajabov</div>
+        <div class="title">Chief Executive Officer</div>
+        <div class="contacts">
+          <div class="contact-item"><span class="ic">&#9742;</span>+992 557 777 509</div>
+          <div class="contact-item"><span class="ic">&#9993;</span>info@itlsolutions.net</div>
+          <div class="contact-item"><span class="ic">&#127760;</span>itlsolutions.net</div>
+          <div class="contact-item"><span class="ic">&#10148;</span>TG / WA: +992 557 777 509</div>
+          <div class="contact-item"><span class="ic">&#9873;</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+        </div>
+      </div>
+      <div class="brand-sm">itlsolutions.net</div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 16 -->
+<div class="variant-label">Variant 16 — Vertical Name</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v16-front">
+      <div class="vert-text">SOLUTIONS</div>
+      <div class="main-content">
+        <div class="company">ITL Solutions</div>
+        <div class="dot-line"><span></span><span></span><span></span></div>
+        <div class="tagline">Digital Solutions Partner</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v16-back">
+      <div class="side-brand">ITLSOLUTIONS.NET</div>
+      <div class="content">
+        <div>
+          <div class="name">Latif Rajabov</div>
+          <div class="title">Chief Executive Officer</div>
+        </div>
+        <div class="contacts">
+          <div class="contact-item"><span class="ic">T</span>+992 557 777 509</div>
+          <div class="contact-item"><span class="ic">E</span>info@itlsolutions.net</div>
+          <div class="contact-item"><span class="ic">W</span>itlsolutions.net</div>
+          <div class="contact-item"><span class="ic">M</span>TG / WA: +992 557 777 509</div>
+          <div class="contact-item"><span class="ic">A</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 17 -->
+<div class="variant-label">Variant 17 — Outline Frame</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v17-front">
+      <div class="corner-tl"></div>
+      <div class="corner-br"></div>
+      <div class="hex-frame">
+        <div class="company">ITL SOLUTIONS</div>
+        <div class="sub-line">Information Technology</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v17-back">
+      <div class="header">
+        <div class="name">Latif Rajabov</div>
+        <div class="title">Chief Executive Officer</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span class="lbl">TEL</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="lbl">EMAIL</span>info@itlsolutions.net</div>
+        <div class="contact-item"><span class="lbl">WEB</span>itlsolutions.net</div>
+        <div class="contact-item"><span class="lbl">TG/WA</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="lbl">ADDR</span>Ayni 50/51, Dushanbe</div>
+      </div>
+      <div class="web">itlsolutions.net</div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 18 -->
+<div class="variant-label">Variant 18 — Gradient Edge</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v18-front">
+      <div class="edge-left"></div>
+      <div class="edge-right"></div>
+      <div class="company">ITL Solutions</div>
+      <div class="divider"></div>
+      <div class="tagline">Technology Partner</div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v18-back">
+      <div class="edge-bottom"></div>
+      <div class="row">
+        <div>
+          <div class="name">Latif Rajabov</div>
+          <div class="title">Chief Executive Officer</div>
+        </div>
+        <div class="logo-text">ITL</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item">+992 557 777 509<span class="sep">&bull;</span>info@itlsolutions.net</div>
+        <div class="contact-item">itlsolutions.net<span class="sep">&bull;</span>TG/WA: +992 557 777 509</div>
+        <div class="contact-item">Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 19 -->
+<div class="variant-label">Variant 19 — Asymmetric Block</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v19-front">
+      <div class="block-left">
+        <svg viewBox="0 0 40 36" width="32" height="28">
+          <polygon points="20,2 38,11 38,29 20,36 2,29 2,11" fill="rgba(255,255,255,0.2)"/>
+          <text x="20" y="23" font-family="Sora,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">ITL</text>
+        </svg>
+      </div>
+      <div class="block-right">
+        <div class="company">ITL Solutions</div>
+        <div class="tagline">Web &bull; Mobile &bull; Cloud &bull; Security</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v19-back">
+      <div class="top">
+        <div class="blue-block"></div>
+        <div class="info">
+          <div class="name">Latif Rajabov</div>
+          <div class="title">Chief Executive Officer</div>
+        </div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span class="ic">&#9742;</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="ic">&#9993;</span>info@itlsolutions.net</div>
+        <div class="contact-item"><span class="ic">&#127760;</span>itlsolutions.net</div>
+        <div class="contact-item"><span class="ic">&#10148;</span>TG/WA: +992 557 777 509</div>
+        <div class="contact-item full-width"><span class="ic">&#9873;</span>Ayni 50/51, Dushanbe, Tajikistan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT 20 -->
+<div class="variant-label">Variant 20 — Dot Matrix</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Front</div>
+    <div class="card v20-front">
+      <div class="dots"></div>
+      <div class="center">
+        <div class="itl-big">ITL</div>
+        <div class="solutions">SOLUTIONS</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Back</div>
+    <div class="card v20-back">
+      <div class="dots"></div>
+      <div class="content">
+        <div>
+          <div class="name">Latif Rajabov</div>
+          <div class="title">Chief Executive Officer</div>
+        </div>
+        <div class="divider"></div>
+        <div class="contacts">
+          <div class="contact-item">&#9742; <span class="val">+992 557 777 509</span></div>
+          <div class="contact-item">&#9993; <span class="val">info@itlsolutions.net</span></div>
+          <div class="contact-item">&#10148; <span class="val">TG / WA: +992 557 777 509</span></div>
+          <div class="contact-item">&#9873; <span class="val">Ayni 50/51, Dushanbe</span></div>
+        </div>
+        <div class="web">ITLSOLUTIONS.NET</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

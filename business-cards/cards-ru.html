@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITL Solutions — Визитные карточки (Русский)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #e8e8e8;
+    font-family: 'Inter', sans-serif;
+    padding: 40px 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #1e3a8a;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+    font-size: 14px;
+  }
+
+  .variant-label {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #374151;
+    margin: 50px 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .card-pair {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .card-side-label {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .card {
+    width: 90mm;
+    height: 50mm;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    position: relative;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .card { box-shadow: none; page-break-inside: avoid; }
+    .variant-label { page-break-before: always; }
+    .variant-label:first-of-type { page-break-before: auto; }
+    h1, .subtitle { display: none; }
+  }
+
+  /* ============================================
+     VARIANT 1 — Classic Blue Gradient
+     ============================================ */
+  .v1-front {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+  }
+  .v1-front .hex { width: 60px; height: 52px; margin-bottom: 8px; }
+  .v1-front .hex svg { width: 100%; height: 100%; }
+  .v1-front .company { font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+  .v1-front .tagline { font-size: 8px; color: rgba(255,255,255,0.7); margin-top: 4px; letter-spacing: 3px; text-transform: uppercase; }
+
+  .v1-back {
+    background: white;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .v1-back .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .v1-back .name { font-size: 14px; font-weight: 700; color: #1e3a8a; }
+  .v1-back .title { font-size: 9px; color: #6b7280; margin-top: 2px; }
+  .v1-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v1-back .contact-item { font-size: 8px; color: #374151; display: flex; align-items: center; gap: 6px; }
+  .v1-back .contact-item .icon { color: #2563eb; font-size: 9px; width: 12px; text-align: center; }
+  .v1-back .divider { height: 2px; background: linear-gradient(90deg, #3b82f6, #1d4ed8); border-radius: 1px; }
+
+  /* ============================================
+     VARIANT 2 — Minimal White
+     ============================================ */
+  .v2-front {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #e5e7eb;
+  }
+  .v2-front .name { font-size: 19px; font-weight: 800; color: #111827; letter-spacing: 1px; }
+  .v2-front .line { width: 40px; height: 3px; background: #3b82f6; margin: 8px 0; border-radius: 2px; }
+  .v2-front .title-text { font-size: 9px; color: #6b7280; text-transform: uppercase; letter-spacing: 3px; }
+
+  .v2-back {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .v2-back .logo-area { display: flex; align-items: center; gap: 8px; }
+  .v2-back .logo-area .brand { font-size: 12px; font-weight: 700; color: #1e3a8a; }
+  .v2-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v2-back .contact-item { font-size: 8px; color: #374151; }
+  .v2-back .contact-item span { color: #3b82f6; font-weight: 600; margin-right: 6px; }
+  .v2-back .bottom-line { height: 2px; background: #3b82f6; }
+
+  /* ============================================
+     VARIANT 3 — Dark Premium
+     ============================================ */
+  .v3-front {
+    background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+  }
+  .v3-front .hex-logo { margin-bottom: 10px; }
+  .v3-front .company { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 4px; }
+  .v3-front .sub { font-size: 7px; color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase; margin-top: 6px; }
+
+  .v3-back {
+    background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .v3-back .name { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600; }
+  .v3-back .title { font-size: 9px; color: #60a5fa; margin-top: 2px; text-transform: uppercase; letter-spacing: 2px; }
+  .v3-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v3-back .contact-item { font-size: 8px; color: rgba(255,255,255,0.7); }
+  .v3-back .contact-item .label { color: #60a5fa; margin-right: 6px; font-size: 7px; text-transform: uppercase; }
+  .v3-back .accent-line { height: 1px; background: linear-gradient(90deg, #3b82f6, transparent); }
+
+  /* ============================================
+     VARIANT 4 — Split Blue/White
+     ============================================ */
+  .v4-front {
+    background: white;
+    display: flex;
+    overflow: hidden;
+  }
+  .v4-front .left-bar {
+    width: 35%;
+    background: linear-gradient(180deg, #1e3a8a, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .v4-front .right-content {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 18px;
+  }
+  .v4-front .company { font-size: 16px; font-weight: 800; color: #1e3a8a; }
+  .v4-front .tagline { font-size: 7px; color: #6b7280; margin-top: 4px; text-transform: uppercase; letter-spacing: 2px; }
+
+  .v4-back {
+    background: white;
+    display: flex;
+    overflow: hidden;
+  }
+  .v4-back .left-bar {
+    width: 6px;
+    background: linear-gradient(180deg, #1e3a8a, #3b82f6);
+  }
+  .v4-back .content {
+    flex: 1;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .v4-back .name { font-size: 14px; font-weight: 700; color: #1e3a8a; }
+  .v4-back .title { font-size: 9px; color: #3b82f6; margin-top: 1px; }
+  .v4-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v4-back .contact-item { font-size: 8px; color: #374151; }
+  .v4-back .contact-item .icon { color: #3b82f6; margin-right: 6px; }
+
+  /* ============================================
+     VARIANT 5 — Geometric Pattern
+     ============================================ */
+  .v5-front {
+    background: #1e3a8a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .v5-front::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border: 20px solid rgba(59,130,246,0.2);
+    border-radius: 50%;
+  }
+  .v5-front::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -20px;
+    width: 100px; height: 100px;
+    border: 15px solid rgba(59,130,246,0.15);
+    border-radius: 50%;
+  }
+  .v5-front .center { text-align: center; z-index: 1; color: white; }
+  .v5-front .company { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; }
+  .v5-front .tagline { font-size: 7px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+  .v5-back {
+    background: white;
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .v5-back::after {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 100px; height: 100px;
+    background: rgba(59,130,246,0.05);
+    border-radius: 50%;
+  }
+  .v5-back .name { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600; color: #1e3a8a; }
+  .v5-back .title { font-size: 9px; color: #6b7280; }
+  .v5-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v5-back .contact-item { font-size: 8px; color: #374151; }
+  .v5-back .contact-item .dot { color: #3b82f6; margin-right: 6px; }
+
+  /* ============================================
+     VARIANT 6 — Elegant Serif
+     ============================================ */
+  .v6-front {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+  }
+  .v6-front .company { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; letter-spacing: 3px; }
+  .v6-front .line { width: 50px; height: 1px; background: #60a5fa; margin: 10px 0; }
+  .v6-front .tagline { font-family: 'Inter', sans-serif; font-size: 7px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+  .v6-back {
+    background: #fafafa;
+    padding: 18px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #e5e7eb;
+  }
+  .v6-back .name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: #1e293b; }
+  .v6-back .title { font-size: 8px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-top: 2px; }
+  .v6-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v6-back .contact-item { font-size: 8px; color: #475569; }
+  .v6-back .contact-item .sep { color: #60a5fa; margin: 0 6px; }
+  .v6-back .bottom-accent { height: 2px; background: linear-gradient(90deg, #1e293b 0%, #3b82f6 100%); }
+
+  /* ============================================
+     VARIANT 7 — Corner Accent
+     ============================================ */
+  .v7-front {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .v7-front::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, #3b82f6 50%, transparent 50%);
+  }
+  .v7-front::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 80px; height: 80px;
+    background: linear-gradient(315deg, #1e3a8a 50%, transparent 50%);
+  }
+  .v7-front .center { z-index: 1; text-align: center; }
+  .v7-front .company { font-size: 18px; font-weight: 800; color: #1e3a8a; }
+  .v7-front .tagline { font-size: 7px; color: #6b7280; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; }
+
+  .v7-back {
+    background: white;
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .v7-back::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, #3b82f6, #1e3a8a);
+  }
+  .v7-back .name { font-size: 14px; font-weight: 700; color: #1e3a8a; margin-left: 8px; }
+  .v7-back .title { font-size: 9px; color: #3b82f6; margin-left: 8px; margin-top: 1px; }
+  .v7-back .contacts { margin-left: 8px; display: flex; flex-direction: column; gap: 3px; }
+  .v7-back .contact-item { font-size: 8px; color: #374151; }
+
+  /* ============================================
+     VARIANT 8 — Bold Modern
+     ============================================ */
+  .v8-front {
+    background: #111827;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .v8-front .bg-text {
+    position: absolute;
+    top: -15px; right: -10px;
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(59,130,246,0.07);
+    letter-spacing: -5px;
+  }
+  .v8-front .content { z-index: 1; }
+  .v8-front .company { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 900; color: white; }
+  .v8-front .sub { font-size: 8px; color: #60a5fa; margin-top: 2px; letter-spacing: 2px; }
+
+  .v8-back {
+    background: #111827;
+    color: white;
+    padding: 18px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .v8-back .top-row { display: flex; justify-content: space-between; align-items: flex-start; }
+  .v8-back .name { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; }
+  .v8-back .title { font-size: 9px; color: #60a5fa; margin-top: 2px; }
+  .v8-back .badge {
+    background: #3b82f6;
+    color: white;
+    font-size: 7px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+  }
+  .v8-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v8-back .contact-item { font-size: 8px; color: rgba(255,255,255,0.7); }
+  .v8-back .contact-item .val { color: white; }
+
+  /* ============================================
+     VARIANT 9 — Gradient Wave
+     ============================================ */
+  .v9-front {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e3a8a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .v9-front .wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100% 100% 0 0;
+  }
+  .v9-front .wave2 {
+    position: absolute;
+    bottom: -10px;
+    width: 120%;
+    height: 40px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 100% 100% 0 0;
+    left: -10%;
+  }
+  .v9-front .company { font-family: 'Raleway', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 3px; z-index: 1; }
+  .v9-front .tagline { font-size: 8px; letter-spacing: 4px; color: rgba(255,255,255,0.7); margin-top: 6px; z-index: 1; text-transform: uppercase; }
+
+  .v9-back {
+    background: white;
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .v9-back .top-gradient {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8, #1e3a8a);
+  }
+  .v9-back .name { font-family: 'Raleway', sans-serif; font-size: 15px; font-weight: 700; color: #1e3a8a; margin-top: 4px; }
+  .v9-back .title { font-size: 9px; color: #3b82f6; }
+  .v9-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v9-back .contact-item { font-size: 8px; color: #374151; }
+  .v9-back .contact-item .bullet { color: #3b82f6; margin-right: 5px; }
+  .v9-back .website { text-align: right; font-size: 8px; color: #1d4ed8; font-weight: 600; }
+
+  /* ============================================
+     VARIANT 10 — Tech Grid
+     ============================================ */
+  .v10-front {
+    background: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    color: white;
+  }
+  .v10-front .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .v10-front .glow {
+    position: absolute;
+    width: 150px; height: 150px;
+    background: radial-gradient(circle, rgba(59,130,246,0.2), transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .v10-front .center { z-index: 1; text-align: center; }
+  .v10-front .company { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 3px; }
+  .v10-front .tagline { font-size: 7px; color: #60a5fa; letter-spacing: 4px; text-transform: uppercase; margin-top: 6px; }
+
+  .v10-back {
+    background: #0f172a;
+    color: white;
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .v10-back .grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .v10-back .content { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+  .v10-back .name { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; }
+  .v10-back .title { font-size: 9px; color: #60a5fa; margin-top: 1px; letter-spacing: 1px; }
+  .v10-back .contacts { display: flex; flex-direction: column; gap: 3px; }
+  .v10-back .contact-item { font-size: 8px; color: rgba(255,255,255,0.6); }
+  .v10-back .contact-item .highlight { color: #60a5fa; }
+  .v10-back .website { font-size: 8px; color: #60a5fa; text-align: right; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>ITL Solutions — Визитные карточки</h1>
+<p class="subtitle">10 вариантов дизайна &bull; Русский язык &bull; Для печати (90&times;50мм)</p>
+
+<!-- ==================== ВАРИАНТ 1 ==================== -->
+<div class="variant-label">Вариант 1 — Классический синий градиент</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v1-front">
+      <div class="hex">
+        <svg viewBox="0 0 60 52">
+          <defs><linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
+          <polygon points="30,2 58,16 58,40 30,52 2,40 2,16" fill="url(#hg1)"/>
+          <text x="30" y="33" font-family="Inter,sans-serif" font-size="16" font-weight="800" fill="white" text-anchor="middle">ITL</text>
+        </svg>
+      </div>
+      <div class="company">ITL SOLUTIONS</div>
+      <div class="tagline">Технологии &bull; Инновации &bull; Качество</div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v1-back">
+      <div>
+        <div class="top">
+          <div>
+            <div class="name">Латиф Раджабов</div>
+            <div class="title">Генеральный директор</div>
+          </div>
+          <div class="logo-sm">
+            <svg viewBox="0 0 30 28" width="28" height="26">
+              <defs><linearGradient id="hg1b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient></defs>
+              <polygon points="15,1 29,8 29,22 15,28 1,22 1,8" fill="url(#hg1b)"/>
+              <text x="15" y="18" font-family="Inter,sans-serif" font-size="8" font-weight="800" fill="white" text-anchor="middle">ITL</text>
+            </svg>
+          </div>
+        </div>
+        <div class="divider" style="margin: 8px 0;"></div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span class="icon">&#9742;</span> +992 557 777 509</div>
+        <div class="contact-item"><span class="icon">&#9993;</span> info@itlsolutions.net</div>
+        <div class="contact-item"><span class="icon">&#9883;</span> itlsolutions.net</div>
+        <div class="contact-item"><span class="icon">&#10148;</span> Telegram / WhatsApp: +992 557 777 509</div>
+        <div class="contact-item"><span class="icon">&#9873;</span> Айни 50/51, Душанбе, Таджикистан</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 2 ==================== -->
+<div class="variant-label">Вариант 2 — Минимализм</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v2-front">
+      <div class="name">ЛАТИФ РАДЖАБОВ</div>
+      <div class="line"></div>
+      <div class="title-text">Генеральный директор</div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v2-back">
+      <div class="logo-area">
+        <svg viewBox="0 0 28 26" width="24" height="22">
+          <defs><linearGradient id="hg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient></defs>
+          <polygon points="14,1 27,7 27,20 14,26 1,20 1,7" fill="url(#hg2)"/>
+          <text x="14" y="17" font-family="Inter,sans-serif" font-size="7" font-weight="800" fill="white" text-anchor="middle">ITL</text>
+        </svg>
+        <div class="brand">ITL Solutions</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span>Тел</span>+992 557 777 509</div>
+        <div class="contact-item"><span>Email</span>info@itlsolutions.net</div>
+        <div class="contact-item"><span>Сайт</span>itlsolutions.net</div>
+        <div class="contact-item"><span>TG/WA</span>+992 557 777 509</div>
+        <div class="contact-item"><span>Адрес</span>Айни 50/51, Душанбе, Таджикистан</div>
+      </div>
+      <div class="bottom-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 3 ==================== -->
+<div class="variant-label">Вариант 3 — Тёмный премиум</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v3-front">
+      <div class="hex-logo">
+        <svg viewBox="0 0 50 46" width="48" height="44">
+          <polygon points="25,2 48,14 48,36 25,46 2,36 2,14" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+          <text x="25" y="29" font-family="Montserrat,sans-serif" font-size="14" font-weight="800" fill="white" text-anchor="middle">ITL</text>
+        </svg>
+      </div>
+      <div class="company">SOLUTIONS</div>
+      <div class="sub">Информационные технологии</div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v3-back">
+      <div>
+        <div class="name">Латиф Раджабов</div>
+        <div class="title">Генеральный директор</div>
+        <div class="accent-line" style="margin-top: 8px;"></div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span class="label">Тел</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="label">Email</span>info@itlsolutions.net</div>
+        <div class="contact-item"><span class="label">Сайт</span>itlsolutions.net</div>
+        <div class="contact-item"><span class="label">TG/WA</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="label">Адрес</span>Айни 50/51, Душанбе</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 4 ==================== -->
+<div class="variant-label">Вариант 4 — Разделённый дизайн</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v4-front">
+      <div class="left-bar">
+        <svg viewBox="0 0 50 46" width="44" height="40">
+          <polygon points="25,2 48,14 48,36 25,46 2,36 2,14" fill="rgba(255,255,255,0.2)"/>
+          <text x="25" y="29" font-family="Inter,sans-serif" font-size="14" font-weight="800" fill="white" text-anchor="middle">ITL</text>
+        </svg>
+      </div>
+      <div class="right-content">
+        <div class="company">ITL Solutions</div>
+        <div class="tagline">Веб &bull; Мобильные &bull; Облако &bull; Безопасность</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v4-back">
+      <div class="left-bar"></div>
+      <div class="content">
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="title">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="contact-item"><span class="icon">&#9742;</span>+992 557 777 509</div>
+          <div class="contact-item"><span class="icon">&#9993;</span>info@itlsolutions.net</div>
+          <div class="contact-item"><span class="icon">&#127760;</span>itlsolutions.net</div>
+          <div class="contact-item"><span class="icon">&#128172;</span>Telegram / WhatsApp: +992 557 777 509</div>
+          <div class="contact-item"><span class="icon">&#128205;</span>Айни 50/51, Душанбе, Таджикистан</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 5 ==================== -->
+<div class="variant-label">Вариант 5 — Геометрический узор</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v5-front">
+      <div class="center">
+        <div class="company">ITL Solutions</div>
+        <div class="tagline">Ваш надёжный технологический партнёр</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v5-back">
+      <div>
+        <div class="name">Латиф Раджабов</div>
+        <div class="title">Генеральный директор</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span class="dot">&bull;</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="dot">&bull;</span>info@itlsolutions.net</div>
+        <div class="contact-item"><span class="dot">&bull;</span>itlsolutions.net</div>
+        <div class="contact-item"><span class="dot">&bull;</span>Telegram / WhatsApp: +992 557 777 509</div>
+        <div class="contact-item"><span class="dot">&bull;</span>Айни 50/51, Душанбе, Таджикистан</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 6 ==================== -->
+<div class="variant-label">Вариант 6 — Элегантный классический</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v6-front">
+      <div class="company">ITL Solutions</div>
+      <div class="line"></div>
+      <div class="tagline">Информационные технологии</div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v6-back">
+      <div>
+        <div class="name">Латиф Раджабов</div>
+        <div class="title">Генеральный директор</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item">+992 557 777 509<span class="sep">|</span>info@itlsolutions.net</div>
+        <div class="contact-item">itlsolutions.net<span class="sep">|</span>Telegram / WhatsApp</div>
+        <div class="contact-item">Айни 50/51, Душанбе, Таджикистан</div>
+      </div>
+      <div class="bottom-accent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 7 ==================== -->
+<div class="variant-label">Вариант 7 — Угловой акцент</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v7-front">
+      <div class="center">
+        <div class="company">ITL SOLUTIONS</div>
+        <div class="tagline">Технологии &bull; Инновации &bull; Качество</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v7-back">
+      <div>
+        <div class="name">Латиф Раджабов</div>
+        <div class="title">Генеральный директор</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item">+992 557 777 509</div>
+        <div class="contact-item">info@itlsolutions.net</div>
+        <div class="contact-item">itlsolutions.net</div>
+        <div class="contact-item">Telegram / WhatsApp: +992 557 777 509</div>
+        <div class="contact-item">Айни 50/51, Душанбе, Таджикистан</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 8 ==================== -->
+<div class="variant-label">Вариант 8 — Смелый современный</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v8-front">
+      <div class="bg-text">ITL</div>
+      <div class="content">
+        <div class="company">ITL SOLUTIONS</div>
+        <div class="sub">ЦИФРОВЫЕ РЕШЕНИЯ</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v8-back">
+      <div>
+        <div class="top-row">
+          <div>
+            <div class="name">Латиф Раджабов</div>
+            <div class="title">Генеральный директор</div>
+          </div>
+          <div class="badge">CEO</div>
+        </div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item">&#9742; <span class="val">+992 557 777 509</span></div>
+        <div class="contact-item">&#9993; <span class="val">info@itlsolutions.net</span></div>
+        <div class="contact-item">&#127760; <span class="val">itlsolutions.net</span></div>
+        <div class="contact-item">&#128172; <span class="val">TG / WA: +992 557 777 509</span></div>
+        <div class="contact-item">&#128205; <span class="val">Айни 50/51, Душанбе, Таджикистан</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 9 ==================== -->
+<div class="variant-label">Вариант 9 — Градиентная волна</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v9-front">
+      <div class="wave2"></div>
+      <div class="wave"></div>
+      <div class="company">ITL Solutions</div>
+      <div class="tagline">Ваш технологический партнёр</div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v9-back">
+      <div class="top-gradient"></div>
+      <div>
+        <div class="name">Латиф Раджабов</div>
+        <div class="title">Генеральный директор</div>
+      </div>
+      <div class="contacts">
+        <div class="contact-item"><span class="bullet">&rsaquo;</span>+992 557 777 509</div>
+        <div class="contact-item"><span class="bullet">&rsaquo;</span>info@itlsolutions.net</div>
+        <div class="contact-item"><span class="bullet">&rsaquo;</span>Telegram / WhatsApp: +992 557 777 509</div>
+        <div class="contact-item"><span class="bullet">&rsaquo;</span>Айни 50/51, Душанбе, Таджикистан</div>
+      </div>
+      <div class="website">itlsolutions.net</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ВАРИАНТ 10 ==================== -->
+<div class="variant-label">Вариант 10 — Технологическая сетка</div>
+<div class="card-pair">
+  <div>
+    <div class="card-side-label">Лицевая сторона</div>
+    <div class="card v10-front">
+      <div class="grid-bg"></div>
+      <div class="glow"></div>
+      <div class="center">
+        <div class="company">ITL SOLUTIONS</div>
+        <div class="tagline">Веб &bull; Мобильные &bull; Облако &bull; Безопасность</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card-side-label">Оборотная сторона</div>
+    <div class="card v10-back">
+      <div class="grid-bg"></div>
+      <div class="content">
+        <div>
+          <div class="name">Латиф Раджабов</div>
+          <div class="title">Генеральный директор</div>
+        </div>
+        <div class="contacts">
+          <div class="contact-item"><span class="highlight">Тел</span> +992 557 777 509</div>
+          <div class="contact-item"><span class="highlight">Email</span> info@itlsolutions.net</div>
+          <div class="contact-item"><span class="highlight">Сайт</span> itlsolutions.net</div>
+          <div class="contact-item"><span class="highlight">TG/WA</span> +992 557 777 509</div>
+          <div class="contact-item"><span class="highlight">Адрес</span> Айни 50/51, Душанбе</div>
+        </div>
+        <div class="website">itlsolutions.net</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
