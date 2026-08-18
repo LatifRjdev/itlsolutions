@@ -60,16 +60,23 @@ export function EmailClient({
   const router = useRouter();
   const [syncing, setSyncing] = useState(false);
   const [searchQuery, setSearchQuery] = useState(search);
+  const [syncError, setSyncError] = useState<string | null>(null);
 
   const handleSync = async () => {
     setSyncing(true);
+    setSyncError(null);
     try {
       const res = await fetch(`/api/admin/email/sync?folder=${currentFolder}`, {
         method: "POST",
       });
       if (res.ok) {
         router.refresh();
+      } else {
+        const data = await res.json().catch(() => null);
+        setSyncError(data?.details || data?.error || "Sync failed");
       }
+    } catch {
+      setSyncError("Network error while syncing");
     } finally {
       setSyncing(false);
     }
@@ -173,6 +180,18 @@ export function EmailClient({
             {syncing ? "Syncing..." : "Sync"}
           </button>
         </div>
+
+        {syncError && (
+          <div className="flex items-center justify-between px-4 py-2 bg-red-50 border-b border-red-200 text-sm text-red-700">
+            <span>Sync failed: {syncError}</span>
+            <button
+              onClick={() => setSyncError(null)}
+              className="text-red-700 hover:underline"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
 
         {/* Email List */}
         <div className="flex-1 overflow-auto">
