@@ -48,3 +48,4 @@ next-env.d.ts
 
 # admin scripts with credentials
 /scripts/update-admin.ts
+.worktrees/
