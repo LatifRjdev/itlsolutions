@@ -204,7 +204,8 @@ export function EmailClient({
               {currentFolder === "INBOX" && !search && (
                 <button
                   onClick={handleSync}
-                  className="mt-4 text-[var(--primary)] hover:underline"
+                  disabled={syncing}
+                  className="mt-4 text-[var(--primary)] hover:underline disabled:opacity-50"
                 >
                   Click to sync emails
                 </button>
