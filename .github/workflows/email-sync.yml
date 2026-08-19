@@ -9,16 +9,19 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Call cron sync endpoint
         run: |
           response=$(curl -s -w "\n%{http_code}" -X POST \
+            --max-time 90 --connect-timeout 10 \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             "${{ secrets.PRODUCTION_URL }}/api/cron/email-sync")
           status_code=$(echo "$response" | tail -n1)
           body=$(echo "$response" | sed '$d')
-          echo "Response: $body"
           if [ "$status_code" -ge 400 ]; then
             echo "Sync failed with status $status_code"
+            echo "Response: $body"
             exit 1
           fi
+          echo "Sync succeeded (status $status_code)"
