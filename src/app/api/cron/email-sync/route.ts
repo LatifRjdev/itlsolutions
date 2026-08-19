@@ -3,7 +3,7 @@ import { syncFolder } from "@/lib/imap";
 
 export const maxDuration = 60;
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
   if (!process.env.CRON_SECRET) {
     console.error("CRON_SECRET is not configured");
     return NextResponse.json({ error: "Server misconfigured" }, { status: 500 });
