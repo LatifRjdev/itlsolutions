@@ -62,6 +62,13 @@ export function EmailClient({
   const [searchQuery, setSearchQuery] = useState(search);
   const [syncError, setSyncError] = useState<string | null>(null);
 
+  console.log("EmailClient-DEBUG render", {
+    currentFolder,
+    emailsLength: emails.length,
+    foldersLength: folders.length,
+    search,
+  });
+
   const handleSync = async () => {
     setSyncing(true);
     setSyncError(null);
@@ -177,7 +184,7 @@ export function EmailClient({
             className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[var(--border)] hover:bg-[var(--background)] transition-colors disabled:opacity-50 text-[var(--foreground-secondary)]"
           >
             <RefreshCw className={`w-4 h-4 ${syncing ? "animate-spin" : ""}`} />
-            {syncing ? "Syncing..." : "Sync"}
+            {syncing ? "Syncing..." : "SYNCDEBUG"}
           </button>
         </div>
 
