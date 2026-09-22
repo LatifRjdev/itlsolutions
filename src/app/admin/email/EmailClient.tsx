@@ -146,8 +146,8 @@ export function EmailClient({
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Toolbar */}
-        <div className="flex items-center justify-between p-4 border-b border-[var(--border)]">
-          <form onSubmit={handleSearch} className="flex-1 max-w-md">
+        <div className="flex items-center gap-4 p-4 border-b border-[var(--border)] overflow-x-auto">
+          <form onSubmit={handleSearch} className="flex-1 min-w-40 max-w-md">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--foreground-secondary)]" />
               <input
@@ -163,7 +163,7 @@ export function EmailClient({
           <button
             onClick={handleSync}
             disabled={syncing}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[var(--border)] hover:bg-[var(--background)] transition-colors disabled:opacity-50 text-[var(--foreground-secondary)]"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[var(--border)] hover:bg-[var(--background)] transition-colors disabled:opacity-50 text-[var(--foreground-secondary)] flex-shrink-0 whitespace-nowrap"
           >
             <RefreshCw className={`w-4 h-4 ${syncing ? "animate-spin" : ""}`} />
             {syncing ? "Syncing..." : "Sync"}
