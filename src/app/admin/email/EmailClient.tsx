@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   Inbox,
   Send,
@@ -62,13 +62,6 @@ export function EmailClient({
   const [searchQuery, setSearchQuery] = useState(search);
   const [syncError, setSyncError] = useState<string | null>(null);
 
-  console.log("EmailClient-DEBUG render", {
-    currentFolder,
-    emailsLength: emails.length,
-    foldersLength: folders.length,
-    search,
-  });
-
   const handleSync = async () => {
     setSyncing(true);
     setSyncError(null);
@@ -96,17 +89,6 @@ export function EmailClient({
     } else {
       router.push("/admin/email");
     }
-  };
-
-  const formatDate = (date: Date) => {
-    const d = new Date(date);
-    const now = new Date();
-    const isToday = d.toDateString() === now.toDateString();
-
-    if (isToday) {
-      return d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
-    }
-    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
   };
 
   return (
@@ -184,7 +166,7 @@ export function EmailClient({
             className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[var(--border)] hover:bg-[var(--background)] transition-colors disabled:opacity-50 text-[var(--foreground-secondary)]"
           >
             <RefreshCw className={`w-4 h-4 ${syncing ? "animate-spin" : ""}`} />
-            {syncing ? "Syncing..." : "SYNCDEBUG"}
+            {syncing ? "Syncing..." : "Sync"}
           </button>
         </div>
 
@@ -266,9 +248,7 @@ export function EmailClient({
                     </p>
                   </div>
 
-                  <span className="text-sm text-[var(--foreground-secondary)] flex-shrink-0">
-                    {formatDate(email.date)}
-                  </span>
+                  <EmailDateLabel date={email.date} />
                 </Link>
               ))}
             </div>
@@ -311,5 +291,52 @@ export function EmailClient({
         )}
       </div>
     </div>
+  );
+}
+
+function subscribeNoop() {
+  return () => {};
+}
+
+// Server render always reports "not mounted" (false); once hydrated in the
+// browser, this flips to true. Used to defer the timezone/"now"-dependent
+// part of the date label to a post-hydration render, so the first paint on
+// both server and client always matches exactly.
+function useMounted() {
+  return useSyncExternalStore(
+    subscribeNoop,
+    () => true,
+    () => false
+  );
+}
+
+function EmailDateLabel({ date }: { date: Date }) {
+  const mounted = useMounted();
+
+  const d = new Date(date);
+  let label: string;
+
+  if (mounted) {
+    const now = new Date();
+    const isToday = d.toDateString() === now.toDateString();
+    label = isToday
+      ? d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+      : d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  } else {
+    // Fixed UTC timezone so the first (server-rendered) pass matches
+    // exactly on hydration, regardless of the server's or viewer's
+    // local timezone. The friendlier, timezone-local label is applied
+    // once mounted, above.
+    label = d.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      timeZone: "UTC",
+    });
+  }
+
+  return (
+    <span className="text-sm text-[var(--foreground-secondary)] flex-shrink-0">
+      {label}
+    </span>
   );
 }
